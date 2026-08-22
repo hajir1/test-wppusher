@@ -184,13 +184,13 @@ function wppusher_test_render_departemen() {
       //              cukup isi jenjang yang memang dimiliki departemen itu.
       //              Departemen tanpa S2/S3 cukup isi array S1 saja, dst.
       // ============================================================
-      const DEPT_DATA = {
+            const DEPT_DATA = {
         bk: {
           name: "Bimbingan dan Konseling",
           image: "",
           scpl: [
             "Memiliki pengetahuan dan kemampuan menampilkan perilaku sebagai warganegara yang agamis, mencintai negara, bangsa, dan budaya Indonesia berdasarkan jiwa pancasila, serta memiliki kemandirian dalam berkarya secara inovatif, adaptif, dan kritis sesuai dengan dinamika global.",
-            "Memiliki nilai dan wawasan keilmuan pendidikan dan pembelajaran secara teoritiki dan aplikatif dalam bingkai budaya Indonesia, dalam perannya sebagai pendidik yang kritis, inovatif, adaptif, dan komunikatif sesuai dengan karakter dan budaya peserta didik di era global.",
+            "Memiliki nilai dan wawasan keilmuan pendidikan dan pembelajaran secara teoritiki dan aplikatif dalam bingkai budaya Indonesia, dalam perannya sebagai pendidik yang kritis, inovatif, adaptif, dan komunikatif sesuai dengan karakter dan budaya peserta didik di era global",
             "Mampu merumuskan tujuan, fungsi, prinsip, asas, konteks, pendekatan, dan prosedur layanan bimbingan dan konseling pada jenis, jalur dan jenjang pendidikan dengan menggunakan pemikiran logis, kritis, kreatif, sistematis, inovatif, dan komprehensif berdasarkan teori-teori pendidikan, psikologi, sosiologi-budaya dan antropologi.",
             "Mampu mengembangkan, menyelenggarakan, mengevaluasi dan menyelia layanan bimbingan dan konseling yang komprehensif dan memandirikan yang bersifat developmental, preventif, kuratif, preservatif, dan kolaboratif pada jenis, jalur dan jenjang satuan pendidikan dengan menggunakan pemikiran logis, kritis, kreatif, sistematis, inovatif, komprehensif, dan adaptif dengan memerhatikan keragaman sasaran layanan.",
             "Mampu mendokumentasikan, menyimpan, mengamankan, dan menemukan kembali data serta menggunakannya sesuai kode etik untuk mendukung layanan bimbingan dan konseling yang menjadi tanggung jawabnya.",
@@ -296,6 +296,51 @@ function wppusher_test_render_departemen() {
                 "Menghasilkan karya akademik melalui kegiatan penelitian dan pengembangan dalam bidang teknologi pendidikan/pembelajaran,memberdayakan masyarakat melalui penerapan berbagai hasil karya teknologi pendidikan/pembelajaran.",
               ],
               kurikulum: [],
+              imageSelengapnya:
+                "https://um.ac.id/wp-content/uploads/2026/07/diktisaintek-berdampak.webp",
+              url: "https://fip.um.ac.id/teknologi-pendidikan-fip-um/",
+              peluangKerja: [],
+            },
+            {
+              label: "S2 Teknologi Pendidikan",
+              visi: "Visi progam studi (Prodi) adalah menjadi program studi unggul dan rujukan dalam penyiapan pengembang  dan peneliti Teknologi Pembelajaran, keilmuan, serta penerapannya dalam memecahkan berbagai persoalan pendidikan/ pembelajaran.",
+              misi: [
+                "menyelenggarakan pendidikan dan pembelajaran di program studi yang berpusat pada mahasiswa, dengan menggunakan berbagai pendekatan dan optimalisai pemanfaatan media dan teknologi informasi.",
+                "menyelenggarakan penelitian dan pengembangan bidang ilmu teknologi pembelajaran untuk menghasilkan karya akademik yang unggul dan menjadi rujukan dalam bidang pengembangan Teknologi Pembelajaran.",
+                "menyelenggarakan pengabdian kepada masyarakat dalam rangka menerapakan ilmu dalam bidang Teknologi Pembelajaran untuk memecahkan berbagai persoalan pendidikan/ pembelajaran di di masyarakat.",
+                "menyelenggarakan tatapamong di tingkat program studi yang akuntabel dan transfaran untuk menjamin terselenggaranya pembelajaran berkelanjutan yang berkualitas.",
+              ],
+              tujuan: [
+                "Menguasai pengetahuan untuk menghasilkan, menggunakan, menilai dan mengelola proses dan penerapan teknologi pendidikan/pembelajaran secara teori dan praktik.",
+                "Mengembangkan diri sebagai praktisi yang dapat menerapkan teknologi dan proses pendidikan / pembelajaran berdasarkan konten dan pedagogy mutakhir.",
+                "Memfasilitasi pembelajaran melalui menciptakan, menggunakan, mengevaluasi dan mengelola lingkungan belajar yang efektif.",
+                "Merancang, mengembangkan, menerapkan dan mengevaluasi lingkungan belajar yang kaya dengan teknologi di dalam komunitas pengguna secara sportif. Melakukan eksplorasi, evaluasi, mensistesis dan penerapan metode inkuiri/penelitian dalam meningkatkan pembelajaran dan memperbaiki unjuk kerja.",
+              ],
+              kurikulum: [],
+              imageSelengapnya:
+                "https://um.ac.id/wp-content/uploads/2026/07/diktisaintek-berdampak.webp",
+              url: "https://fip.um.ac.id/s2-teknologi-pembelajaran/",
+              peluangKerja: [],
+            },
+            {
+              label: "S3 Teknologi Pendidikan",
+              visi: "Visi progam studi (Prodi) adalah menjadi program studi unggul dan rujukan dalam penyiapan pengembang  dan peneliti Teknologi Pembelajaran, keilmuan, serta penerapannya dalam memecahkan berbagai persoalan pendidikan/pembelajaran.",
+              misi: [
+                "menyelenggarakan pendidikan dan pembelajaran di program studi yang berpusat pada mahasiswa, dengan menggunakan berbagai pendekatan dan optimalisai pemanfaatan media dan teknologi informasi.",
+                "menyelenggarakan penelitian dan pengembangan bidang ilmu teknologi pembelajaran untuk menghasilkan karya akademik yang unggul dan menjadi rujukan dalam bidang pengembangan Teknologi Pembelajaran.",
+                "menyelenggarakan pengabdian kepada masyarakat dalam rangka menerapakan ilmu dalam bidang Teknologi Pembelajaran untuk memecahkan berbagai persoalan pendidikan/ pembelajaran di di masyarakat.",
+                "menyelenggarakan tatapamong di tingkat program studi yang akuntabel dan transfaran untuk menjamin terselenggaranya pembelajaran berkelanjutan yang berkualitas.",
+              ],
+              tujuan: [
+                "Menguasai pengetahuan untuk menghasilkan, menggunakan, menilai dan mengelola proses dan penerapan teknologi pendidikan/pembelajaran secara teori dan praktik.",
+                "Mengembangkan diri sebagai praktisi yang dapat menerapkan teknologi dan proses pendidikan / pembelajaran berdasarkan konten dan pedagogy mutakhir.",
+                "Memfasilitasi pembelajaran melalui menciptakan, menggunakan, mengevaluasi dan mengelola lingkungan belajar yang efektif.",
+                "Merancang, mengembangkan, menerapkan dan mengevaluasi lingkungan belajar yang kaya dengan teknologi di dalam komunitas pengguna secara sportif. Melakukan eksplorasi, evaluasi, mensistesis dan penerapan metodi inkuiri/ penelitian dalam meningkatkan pembelajaran dan memperbaiki unjuk kerja serta mampu memublikasikannya untuk kemaslahatan orang banyak.",
+              ],
+              kurikulum: [],
+              imageSelengapnya:
+                "https://um.ac.id/wp-content/uploads/2026/07/diktisaintek-berdampak.webp",
+              url: "https://fip.um.ac.id/s3-teknologi-pembelajaran/",
               peluangKerja: [],
             },
           ],
@@ -305,7 +350,7 @@ function wppusher_test_render_departemen() {
           image: "",
           imageSelengapnya:
             "https://um.ac.id/wp-content/uploads/2026/07/diktisaintek-berdampak.webp",
-          url: "https://um.ac.id/wp-content/uploads/2026/07/diktisaintek-berdampak.webp",
+          url: "https://apfip.um.ac.id/",
           scpl: [
             "Mampu mengaplikasikan ilmu pengetahuan, teknologi, dan seni bidang manajemen pendidikan.",
             "Mampu mengaplikasikan ilmu pengetahuan, teknologi, dan seni bidang kepemimpinan pendidikan.",
@@ -330,6 +375,60 @@ function wppusher_test_render_departemen() {
               kurikulum: [
                 "Kurikulum senantiasa berkembang sesuai dengan tuntutan masyarakat. Sesuai dengan tuntutan yang ada, dan berdasarkan Kepmendiknas Nomor 232/U/2000 tentang Pedoman Penyusunan Kurikulum Pendidikan Tinggi dan Penilaian Hasil Belajar Mahasiswa, serta Kepmendiknas Nomor 045/U/2002 tentang Kurikulum Inti Pendidikan Tinggi, Jurusan Administrasi Pendidikan mengembangkan kurikulum yang berlaku sekarang. Pengembangan kurikulum memperhatikan masukan & kebutuhan praktisi di lapangan serta pemikiran tentang peningkatan kualitas pengelolaan dan penyelenggaraan pendidikan di Indonesia. Sesuai dengan Peraturan Presiden RI Nomor 8 Tahun 2012, mulai tahun 2014 Jurusan Administrasi Pendidikan menerapkan kurikulum berbasis Kerangka Kualifikasi Nasional Indonesia (KKNI).",
               ],
+              imageSelengapnya:
+                "https://um.ac.id/wp-content/uploads/2026/07/diktisaintek-berdampak.webp",
+              url: "https://fip.um.ac.id/administrasi-pendidikan/",
+              peluangKerja: [
+                "Secara umum program S-1 Jurusan Administrasi Pendidikan menghasilkan lulusan yang memiliki peluang kerja pada jenis-jenis tenaga kependidikan yang relevan sebagaimana diatur dalam Peraturan Pemerintah Republik Indonesia Nomor 38 tahun 1992 tentang Tenaga Kependidikan, Bab II pasal 2 – 3 dan Bab VI pasal 19­20. Di samping itu lulusan Jurusan Administrasi Pendidikan diharapkan dapat menempati pos-pos kerja berikut: (1) pengelola dan wirausaha di bidang pendidikan, (2) tenaga/staf administrasi dan atau manajer di unit-unit persekolahan (sekolah dasar s.d. perguruan tinggi), (3) tenaga/staf administrasi dan/atau manajemen di lingkungan Kementerian Pendidikan dan Kebudayaan serta unit-unit kantor dinas pendidikan dan kebudayaan, (4) tenaga/staf administrasi dan/atau manajemen di unit-unit kantor pemerintah daerah, (5) tenaga pengajar pada perguruan tinggi yang relevan (diutamakan yang telah memiliki ijazah S-2), (6) tenaga pendidik (guru) di sekolah-sekolah yang relevan, sesuai dengan persyaratan pengangkatan yang ditetapkan pemerintah dan/atau oleh instansi terkait, (7) tenaga pelatih (instruktur) dipusat-pusat pendidikan dan pelatihan, kursus-kursus, dan lembaga pendidikan lain yang relevan, (8) administrator, manajer, dan supervisor kependidikan, terutama bagi lulusan yang telah memiliki pengalaman kerja sebagai guru atau tenaga pendidik, dan (9) direktur, manajer atau pengelola lembaga-lembaga kependidikan yang relevan, sesuai dengan persyaratan dan pengalaman kerja yang dibutuhkan oleh instansi terkait.",
+              ],
+            },
+            {
+              label: "S2 Administrasi Pendidikan",
+              visi: "Visi Program Studi Manajemen Pendidikan adalah sebagai pendidikan unggulan dan rujukan dalam penyelenggaraan pendidikan, pengkajian, dan pengembangan ilmu manajemen pendidikan, sehingga mampu menghasilkan lulusan yang memiliki kemampuan akademik dan/atau profesional yang kompetitif.Rumusan visi tersebut merupakan penjabaran dari visi Pascasarjana Uni­versitas Negeri Malang, yakni: menjadikan Pascasarjana sebagai pusat ung­gulan dan lembaga rujukan dalam pendidikan, penelitian dan pengabdian masyarakat yang relevan dangan kebutuhan pembangunan.",
+              misi: [
+                "Menyelenggarakan pendidikan Pascasarjana dalam bidang Manajemen Pendidikan, yang menghasilkan sumber daya manusia (SDM) handal dan profesional agar dapat membangun dan mengembangkan lembaga pendidikan.",
+                "Mewujudkan berbagai kegiatan akademik yang mampu mempersiapkan pemimpin, manajer dan supervisor pendidikan yang memiliki kompetensi kepemimpinan, supervisi, dan manajemen pendidikan serta keterampilan manajemen pendidikan (konseptual, teknis dan hubungan insani) untuk mengefektifkan penca­paian dan perwujudan tujuan pendidikan nasional.",
+                "Melaksanakan crash program yang dapat membangun SDM yang mampu menter-jemahkan manajemen pendidikan yang bersifat sentralistik ke manajemen pendi­dikan yang bernuansa desentralistik di era otonomi daerah, dangan tetap memperhatikan sistem manajemen pendidikan Indonesia sebagai satu ke­satuan yang utuh.",
+                "Meningkatkan mutu, relevansi, dan daya saing melalui pendidikan, penelitian dan pengembangan ilmu serta pengabdian kepada masyarakat.",
+                "Membangun organisasi program studi yang sehat dalam rangka penguatan tata ke­Iola, tranparansi, dan pencitraan publik agar menjadi program studi yang handal dan akuntabel.",
+              ],
+              tujuan: [
+                "Menghasilkan tenaga-tenaga calon dosen dalam bidang manajemen pendidikan yang mampu mengajarkan dangan baik pada bidang itu di strata satu (S1) atau di bawahnya dan di lembaga pendidikan lain yang mempersyaratkan kemampuan di bidang manajemen pendidik­an.",
+                "Menyiapkan tenaga-tenaga profesional di lapangan yang mampu memimpin, mengelola, dan membina satuan-satuan pendidikan, seperti kepala sekolah, penilik, pengawas, manajer dan pemimpin unit kerja pendidikan lainnya, yang ada dan yang dibutuhkan dalam sistem pendidikan nasional.",
+                "Menghasilkan lulusan yang mampu mengkaji, melaksanakan, dan mengabdikan il­munya demi perkembangan dan peningkatan kualitas pendidikan di berbagai instan­si dan satuan pendidikan pada berbagai jenis dan jenjang pendidikan.",
+              ],
+              kurikulum: [
+                "Kurikulum senantiasa berkembang sesuai dengan tuntutan masyarakat. Sesuai dengan tuntutan yang ada, dan berdasarkan Kepmendiknas Nomor 232/U/2000 tentang Pedoman Penyusunan Kurikulum Pendidikan Tinggi dan Penilaian Hasil Belajar Mahasiswa, serta Kepmendiknas Nomor 045/U/2002 tentang Kurikulum Inti Pendidikan Tinggi, Jurusan Administrasi Pendidikan mengembangkan kurikulum yang berlaku sekarang. Pengembangan kurikulum memperhatikan masukan & kebutuhan praktisi di lapangan serta pemikiran tentang peningkatan kualitas pengelolaan dan penyelenggaraan pendidikan di Indonesia. Sesuai dengan Peraturan Presiden RI Nomor 8 Tahun 2012, mulai tahun 2014 Jurusan Administrasi Pendidikan menerapkan kurikulum berbasis Kerangka Kualifikasi Nasional Indonesia (KKNI).",
+              ],
+              imageSelengapnya:
+                "https://um.ac.id/wp-content/uploads/2026/07/diktisaintek-berdampak.webp",
+              url: "https://fip.um.ac.id/s2-managemen-pendidikan/",
+              peluangKerja: [
+                "Secara umum program S-1 Jurusan Administrasi Pendidikan menghasilkan lulusan yang memiliki peluang kerja pada jenis-jenis tenaga kependidikan yang relevan sebagaimana diatur dalam Peraturan Pemerintah Republik Indonesia Nomor 38 tahun 1992 tentang Tenaga Kependidikan, Bab II pasal 2 – 3 dan Bab VI pasal 19­20. Di samping itu lulusan Jurusan Administrasi Pendidikan diharapkan dapat menempati pos-pos kerja berikut: (1) pengelola dan wirausaha di bidang pendidikan, (2) tenaga/staf administrasi dan atau manajer di unit-unit persekolahan (sekolah dasar s.d. perguruan tinggi), (3) tenaga/staf administrasi dan/atau manajemen di lingkungan Kementerian Pendidikan dan Kebudayaan serta unit-unit kantor dinas pendidikan dan kebudayaan, (4) tenaga/staf administrasi dan/atau manajemen di unit-unit kantor pemerintah daerah, (5) tenaga pengajar pada perguruan tinggi yang relevan (diutamakan yang telah memiliki ijazah S-2), (6) tenaga pendidik (guru) di sekolah-sekolah yang relevan, sesuai dengan persyaratan pengangkatan yang ditetapkan pemerintah dan/atau oleh instansi terkait, (7) tenaga pelatih (instruktur) dipusat-pusat pendidikan dan pelatihan, kursus-kursus, dan lembaga pendidikan lain yang relevan, (8) administrator, manajer, dan supervisor kependidikan, terutama bagi lulusan yang telah memiliki pengalaman kerja sebagai guru atau tenaga pendidik, dan (9) direktur, manajer atau pengelola lembaga-lembaga kependidikan yang relevan, sesuai dengan persyaratan dan pengalaman kerja yang dibutuhkan oleh instansi terkait.",
+              ],
+            },
+            {
+              label: "S3 Administrasi Pendidikan",
+              visi: "Visi Program Studi Manajemen Pendidikan adalah sebagai pendidikan unggulan dan rujukan dalam penyelenggaraan pendidikan, pengkajian, dan pengembangan ilmu manajemen pendidikan, sehingga mampu menghasilkan lulusan yang memiliki kemampuan akademik dan/atau profesional yang kompetitif.Rumusan visi tersebut merupakan penjabaran dari visi Pascasarjana Uni­versitas Negeri Malang, yakni: menjadikan Pascasarjana sebagai pusat ung­gulan dan lembaga rujukan dalam pendidikan, penelitian dan pengabdian masyarakat yang relevan dangan kebutuhan pembangunan.",
+              misi: [
+                "Menyelenggarakan pendidikan dalam bidang Manaje­men Pendidikan. Untuk menghasilkan sUniversitas Negeri Malangber daya manusia (SDM) yang handal dan profesional yang dapat membangun dan mengem­bangkan lembaga pendidikan melalui manajemen pendidikan modern yang memiliki landasan teori dan praktik, serta memiliki landasan saintifik.",
+                "Mewujudkan berbagai kegiatan akademik yang mampu mempersiap­kan kepemimpinan pendidikan dan manajer pendidikan yang memi­liki kompetensi kepemimpinan, supervisi, dan manajemen pendidikan serta keterampilan manajemen pendidikan (konseptual, teknis dan hubungan insani) untuk mengefektifkan penca­paian dan perwujudan tujuan pendidikan nasional.",
+                "Melaksanakan crash program yang dapat membangun SDM yang mampu menterjemahkan manajemen pendidikan yang bersifat sentralistik ke manajemen pendidikan yang bernuansa desentralistik dalam era otonomi daerah, dengan tetap memperhatikan sistem manajemen pendidikan Indonesia sebagai satu keutuhan dan ke­satuan.",
+                "Meningkatkan mutu, relevansi, dan daya saing melalui pendidikan, penelitian dan pengembangan ilmu dan pengabdian kepada masyara­kat.",
+                "Membangun organisasi program studi yang sehat dalam rangka penguatan tata kelola, tranparansi, dan pencitraan publik agar menjadi program studi yang handal dan akuntabel.",
+              ],
+              tujuan: [
+                "Menyiapkan tenaga pemikir, peneliti dan pengembang yang mampu mengidentifikasi/mengembangkan teori, konsep dan proposisi dalam manajemen pendidikan, sebagai landasan pemahaman dan penyeleng­garaan kelembagaan dalam sistem pendidikan nasional.",
+                "Menyiapkan/meningkatkan kemampuan praktisi kepemimpinan dan pengelolaan, baik dalam fungsi lini maupun staf, pada berbagai jenis dan jenjang pekerjaan yang ada atau dibutuhkan dalam sistem pendi­dikan nasional.",
+                "Menyiapkan tenaga ahli/konsultan dalam perencanaan dan pengem­bangan personel termasuk penyelenggaraan pendidikan dan latihan dalam berbagai lembaga atau pekerjaan.",
+                "Menghasilkan tenaga dosen dengan kualifikasi penuh pada jenjang Magister atau jenjang di bawahnya yang menyelenggarakan program studi dalam bidang yang sama atau yang menyajikan matakuliah/ pengalaman belajar tertentu dalam manajemen pendidikan.",
+              ],
+              kurikulum: [
+                "Kurikulum senantiasa berkembang sesuai dengan tuntutan masyarakat. Sesuai dengan tuntutan yang ada, dan berdasarkan Kepmendiknas Nomor 232/U/2000 tentang Pedoman Penyusunan Kurikulum Pendidikan Tinggi dan Penilaian Hasil Belajar Mahasiswa, serta Kepmendiknas Nomor 045/U/2002 tentang Kurikulum Inti Pendidikan Tinggi, Jurusan Administrasi Pendidikan mengembangkan kurikulum yang berlaku sekarang. Pengembangan kurikulum memperhatikan masukan & kebutuhan praktisi di lapangan serta pemikiran tentang peningkatan kualitas pengelolaan dan penyelenggaraan pendidikan di Indonesia. Sesuai dengan Peraturan Presiden RI Nomor 8 Tahun 2012, mulai tahun 2014 Jurusan Administrasi Pendidikan menerapkan kurikulum berbasis Kerangka Kualifikasi Nasional Indonesia (KKNI).",
+              ],
+              imageSelengapnya:
+                "https://um.ac.id/wp-content/uploads/2026/07/diktisaintek-berdampak.webp",
+              url: "https://fip.um.ac.id/s3-managemen-pendidikan/",
               peluangKerja: [
                 "Secara umum program S-1 Jurusan Administrasi Pendidikan menghasilkan lulusan yang memiliki peluang kerja pada jenis-jenis tenaga kependidikan yang relevan sebagaimana diatur dalam Peraturan Pemerintah Republik Indonesia Nomor 38 tahun 1992 tentang Tenaga Kependidikan, Bab II pasal 2 – 3 dan Bab VI pasal 19­20. Di samping itu lulusan Jurusan Administrasi Pendidikan diharapkan dapat menempati pos-pos kerja berikut: (1) pengelola dan wirausaha di bidang pendidikan, (2) tenaga/staf administrasi dan atau manajer di unit-unit persekolahan (sekolah dasar s.d. perguruan tinggi), (3) tenaga/staf administrasi dan/atau manajemen di lingkungan Kementerian Pendidikan dan Kebudayaan serta unit-unit kantor dinas pendidikan dan kebudayaan, (4) tenaga/staf administrasi dan/atau manajemen di unit-unit kantor pemerintah daerah, (5) tenaga pengajar pada perguruan tinggi yang relevan (diutamakan yang telah memiliki ijazah S-2), (6) tenaga pendidik (guru) di sekolah-sekolah yang relevan, sesuai dengan persyaratan pengangkatan yang ditetapkan pemerintah dan/atau oleh instansi terkait, (7) tenaga pelatih (instruktur) dipusat-pusat pendidikan dan pelatihan, kursus-kursus, dan lembaga pendidikan lain yang relevan, (8) administrator, manajer, dan supervisor kependidikan, terutama bagi lulusan yang telah memiliki pengalaman kerja sebagai guru atau tenaga pendidik, dan (9) direktur, manajer atau pengelola lembaga-lembaga kependidikan yang relevan, sesuai dengan persyaratan dan pengalaman kerja yang dibutuhkan oleh instansi terkait.",
               ],
@@ -337,11 +436,11 @@ function wppusher_test_render_departemen() {
           ],
         },
         pls: {
-          name: "PLS",
+          name: "Pendidikan Luar Sekolah",
           image: "",
           imageSelengapnya:
             "https://um.ac.id/wp-content/uploads/2026/07/diktisaintek-berdampak.webp",
-          url: "https://um.ac.id/wp-content/uploads/2026/07/diktisaintek-berdampak.webp",
+          url: "https://plsfip.um.ac.id/",
           scpl: [
             "Memiliki pengetahuan dan kemampuan menampilkan perilaku sebagai warga Negara yang agamis, mencintai Negara, bangsa, dan budaya Indonesia berdasarkan jiwa Pancasila serta memiliki kemandirian dalam berkarya secara inovatif, adaptif, dan kritis sesuai dengan dinamika global.",
             "Menguasai konsep dan prosedur pendidikan nonformal secara kritis, kreatif, kolaboratif, komunikatif, mendayagunakan teknologi informasi (TI), serta memiliki integritas dan berkarakter.",
@@ -362,6 +461,51 @@ function wppusher_test_render_departemen() {
                 "Menghasilkan karya-karya ilmiah berbasis riset di bidang pendidikan luar sekolah yang menunjang paradigma pendidikan sepanjang hayat (lifelong learning).",
                 "Menghasilkan model-model program layanan masyarakat di bidang pendidikan luar sekolah yang fungsional bagi alternatif solusi pemecahan masalah pendidikan di masyarakat.",
               ],
+              imageSelengapnya:
+                "https://um.ac.id/wp-content/uploads/2026/07/diktisaintek-berdampak.webp",
+              url: "https://plsfip.um.ac.id/",
+              kurikulum: [],
+              peluangKerja: [],
+            },
+            {
+              label: "S2 Pendidikan Luar Sekolah",
+              visi: "Menjadi program studi unggul dan rujukan dalam penyelenggaraan tridharma perguruan tinggi bidang pendidikan luar sekolah.",
+              misi: [
+                "Menyelenggarakan pendidikan dan pembelajaran yang berpusat pada peserta didik untuk menyiapkan pendidik dan tenaga kependidikan di bidang pendidikan luar sekolah yang memiliki     kepedulian terhadap nilai-nilai kemanusiaan, profesional dan akademik.",
+                "Menyelenggarakan penelitian dalam ilmu pendidikan luar sekolah yang temuannya bermanfaat bagi pengembangan ilmu dan kesejahteraan masyarakat.",
+                "Menyelenggarakan dan menghasilkan karya pengabdian kepada masyarakat melalui penerapan ilmu bidang pendidikan luar sekolah.",
+                "Menyelenggarakan tata pamong Program Studi yang efektif, akuntabel, dan transparan yang menjamin peningkatan kualitas yang berkelanjutan.",
+              ],
+              tujuan: [
+                "Menghasilkan lulusan dengan karakteristik keimanan, ketaqwaan, dan kebangsaan yang kuat serta berbudi pekerti luhur.",
+                "Menghasilkan karya ilmiah dan karya kreatif-inovatif yang unggul dan rujukan dalam keilmuan bidang pendidikan luar sekolah.",
+                "Menghasilkan karya pengabdian kepada masyarakat melalui penerapan ilmu pendidikan luar sekolah untuk mewujudkan masyarakat yang mandiri, produktif dan sejahtera.",
+                "Menghasilkan kinerja Program Studi yang profesional,efektif dan efesien, akuntabel untuk menjamin kualitas pelaksanaan tridharma perguruan tinggi yang berkelanjutan.",
+              ],
+              imageSelengapnya:
+                "https://um.ac.id/wp-content/uploads/2026/07/diktisaintek-berdampak.webp",
+              url: "https://fip.um.ac.id/s2-pendidikan-luar-sekolah/",
+              kurikulum: [],
+              peluangKerja: [],
+            },
+            {
+              label: "S3 Pendidikan Luar Sekolah",
+              visi: "Menjadi program studi unggul dan rujukan dalam penyelenggaraan tridharma perguruan tinggi bidang pendidikan luar sekolah.",
+              misi: [
+                "Menyelenggarakan pendidikan dan pembelajaran yang berpusat pada peserta didik untuk menyiapkan pendidik dan tenaga kependidikan di bidang pendidikan luar sekolah yang memiliki     kepedulian terhadap nilai-nilai kemanusiaan, profesional dan akademik.",
+                "Menyelenggarakan penelitian dalam ilmu pendidikan luar sekolah yang temuannya bermanfaat bagi pengembangan ilmu dan kesejahteraan masyarakat.",
+                "Menyelenggarakan dan menghasilkan karya pengabdian kepada masyarakat melalui penerapan ilmu bidang pendidikan luar sekolah.",
+                "Menyelenggarakan tata pamong Program Studi yang efektif, akuntabel, dan transparan yang menjamin peningkatan kualitas yang berkelanjutan.",
+              ],
+              tujuan: [
+                "Menghasilkan lulusan dengan karakteristik keimanan, ketaqwaan, dan kebangsaan yang kuat serta berbudi pekerti luhur.",
+                "Menghasilkan karya ilmiah dan karya kreatif-inovatif yang unggul dan rujukan dalam keilmuan bidang pendidikan luar sekolah.",
+                "Menghasilkan karya pengabdian kepada masyarakat melalui penerapan ilmu pendidikan luar sekolah untuk mewujudkan masyarakat yang mandiri, produktif dan sejahtera.",
+                "Menghasilkan kinerja Program Studi yang profesional,efektif dan efesien, akuntabel untuk menjamin kualitas pelaksanaan tridharma perguruan tinggi yang berkelanjutan.",
+              ],
+              imageSelengapnya:
+                "https://um.ac.id/wp-content/uploads/2026/07/diktisaintek-berdampak.webp",
+              url: "https://fip.um.ac.id/s3-pendidikan-luar-sekolah/",
               kurikulum: [],
               peluangKerja: [],
             },
@@ -372,20 +516,54 @@ function wppusher_test_render_departemen() {
           image: "",
           imageSelengapnya:
             "https://um.ac.id/wp-content/uploads/2026/07/diktisaintek-berdampak.webp",
-          url: "https://um.ac.id/wp-content/uploads/2026/07/diktisaintek-berdampak.webp",
+          url: "https://pgsdfip.um.ac.id/",
           scpl: [],
           jenjang: [
             {
               label: "S1 PG PAUD",
-              visi: "",
-              misi: [],
-              tujuan: [],
+              visi: "Mengembangkan keilmuan di bidang pendidikan anak usia dini berbasis penelitian yang adaptif terhadap perkembangan IPTEKS dengan menekankan pada inovasi pembelajaran dan profesionalitas pendidik anak usia dini untuk menghasilkan lulusan yang berkarakter, terampil belajar, dan mampu berinovasi yang diharapkan tercapai pada tahun 2030 secara nasional dan regional.",
+              misi: [
+                "Menyelenggarakan pendidikan yang menekankan pada didaktik metodik bidang kependidikan anak usia dini berbasis pemanfaatan teknologi untuk konstruksi pola pikir reflektif dan inovatif.",
+                "Melaksanakan penelitian yang inovatif dan adaptif berorientasi pada peningkatan kualitas pengembangan IPTEKS bidang kependidikan anak usia dini",
+                "Melaksanakan pengabdian kepada masyarakat yang inovatif dan adaptif terhadap perkembangan IPTEKS berorientasi pada kebermanfaatan dan pemberdayaan untuk masyarakat di bidang kependidikan anak usia dini.",
+              ],
+              tujuan: [
+                "Menghasilkan Sarjana Pendidikan Guru Pendidikan Anak Usia Dini yang memiliki kemampuan dalam mengelola dan melaksanakan layanan pendidikan anak usia dini yang memandirikan pada semua jalur, jenjang, dan jenis pendidikan.",
+                "Menghasilkan karya ilmiah bidang pendidikan anak usia dini melalui penelitian dan pengembangan ilmu, teknologi, edupreneurship, dan seni yang unggul berkelanjutan, sehingga menjadi rujukan inovasi di bidang keilmuan pendidikan anak usia dini.",
+                "Menghasilkan bentuk/model layanan pengadaan, pembinaan, dan peningkatan sumber daya manusia melalui penerapan ilmu pengetahuan, teknologi, dan seni yang unggul dalam kegiatan pengabdian masyarakat.",
+              ],
+              imageSelengapnya:
+                "https://um.ac.id/wp-content/uploads/2026/07/diktisaintek-berdampak.webp",
+              url: "https://fip.um.ac.id/s1-pendidikan-guru-paud/",
+              peluangKerja: [],
+            },
+            {
+              label: "S2 Pendidikan Anak Usia Dini",
+              visi: "Menjadi Program Studi yang unggul dan menjadi rujukan bagi penyelenggaraan pendidikan, penelitian, dan pengembangan penerapan ilmu serta teknologi, dalam bidang pendidikan anak usia dini.",
+              misi: [
+                "Menyelenggarakan pendidikan Program Studi S2 Pendidikan Anak Usia Dini yang berkualitas, bermartabat, dan bermanfaat.",
+                "Melaksanaan penelitian dan pengembangan ilmu dalam bidang PAUD untuk menghasilkan teori-teori, gagasan, dan argumentasi saintifik dalam bidang PAUD untuk memecahkan masalah di masyarakat atau dunia kerja.",
+                "Melaksanakan pengabdian masyarakat dalam bidang PAUD untuk meningkatkan mutu, relevansi, dan daya saing pendidikan anak usia dini.",
+                "Menyelenggarakan tata pamong pascasarjana Program studi S2 Pendidikan Anak Usia Dini yang otonom akuntabel dan transparan yang menjamin peningkatan kualitas berkelanjutan.",
+              ],
+              tujuan: [
+                "Menjadi program studi unggulan dan rujukan bagi lulusan S1 PAUD untuk melanjutkan studinya.",
+                "Untuk menghasilkan tenaga pengembang dan tenaga pendidik yang profesional dalam bidang Pendidikan Anak Usia Dini yang menguasai berbagai perspektif filosofis, teoritis dan praktis untuk memecahkan problematika pendidikan PAUD dan pengembangannya bagi kehidupan kemanusiaan.",
+                "Melahirkan sumberdaya manusia yang unggul, kompetitif dan berdaya saing untuk menjawab tantangan dunia pendidikan khususnya di PAUD.",
+                "Mewujudkan kegiatan pembelajaran yang bertujuan untuk menghasilkan lulusan yang memiliki kompetensi dalam bidang PAUD",
+                "Mengembangkan kegiatan-kegiatan riset dan pengembangan teknologi yang berkaitan dengan kebaharuan pengetahuan yang unggul.",
+                "Menjadi program studi yang memberikan akses belajar dan sumber belajar kepada masyarakat.",
+                "Memberikan layanan pendidikan yang dapat dijadikan sebagai bekal dan pendorong pada proses kegiatan pembelajaran berkelanjutan.",
+              ],
+              imageSelengapnya:
+                "https://um.ac.id/wp-content/uploads/2026/07/diktisaintek-berdampak.webp",
+              url: "https://fip.um.ac.id/s2-pendidikan-anak-usia-dini/",
               peluangKerja: [],
             },
           ],
         },
         posd: {
-          name: "POSD",
+          name: "PGSD",
           image: "",
           imageSelengapnya:
             "https://um.ac.id/wp-content/uploads/2026/07/diktisaintek-berdampak.webp",
@@ -393,10 +571,23 @@ function wppusher_test_render_departemen() {
           scpl: [],
           jenjang: [
             {
-              label: "S1 Pendidikan Guru Sekolah Dasar",
-              visi: "",
-              misi: [],
-              tujuan: [],
+              label: "S1 Pendidikan Guru SD",
+              visi: "Menjadi program studi yang unggul dan menjadi rujukan dalam penyelenggaraan tri darma perguruan tinggi dalam bidang Kependidikan Sekolah Dasar.",
+              misi: [
+                "Menyelenggarakan pendidikan dalam bidang kependidikan sekolah dasar .",
+                "Menyelenggarakan penelitian dalam bidang kependidikan sekolah dasar.",
+                "Menyelenggarakan pengabdian kepada masyarakat dalam bidang kependidikan sekolah dasar.",
+                "Menyelenggarakan teacherpreneurship dalam bidang kependidikan sekolah dasar.",
+              ],
+              tujuan: [
+                "Menghasilkan sarjana pendidikan dalam bidang pendidikan kependidikan sekolah dasar yang beriman, bertaqwa, dan memiliki rasa nasionalisme yang tinggi.",
+                "Menghasilkan sarjana pendidikan yang siap dididik menjadi guru sekolah dasar profesional.",
+                "Menghasilkan sarjana pendidikan yang mampu menjadi peneliti pemula dalam bidang kependidikan sekolah dasar.",
+                "Menghasilkan sarjana pendidikan yang berjiwa kewirausahaan dalam bidang pendidikan sekolah dasar.",
+              ],
+              imageSelengapnya:
+                "https://um.ac.id/wp-content/uploads/2026/07/diktisaintek-berdampak.webp",
+              url: "https://fip.um.ac.id/s1-pendidikan-guru-sd/",
               peluangKerja: [],
             },
           ],
@@ -406,19 +597,58 @@ function wppusher_test_render_departemen() {
           image: "",
           imageSelengapnya:
             "https://um.ac.id/wp-content/uploads/2026/07/diktisaintek-berdampak.webp",
-          url: "https://um.ac.id/wp-content/uploads/2026/07/diktisaintek-berdampak.webp",
-          scpl: [],
+          url: "https://plbfip.um.ac.id/",
+          scpl: [
+            "Merancang pendidikan Anak Berkebutuhan Khusus (ABK) di sekolah khusus, sekolah inklusif, maupun jalur pendidikan nonformal pada tingkat pendidikan pra sekolah, dasar dan menengah dengan berbasis kemandirian.",
+            "Melaksanakan pendidikan Anak Berkebutuhan Khusus (ABK) di sekolah khusus, sekolah inklusif, maupun jalur pendidikan nonformal pada tingkat pendidikan pra sekolah, dasar dan menengah dengan berbasis kemandirian dan menggunakan pendekatan pembelajaran yang efektif, inovatif, dan humanis, serta mengoptimalkan pemanfaatan berbagai sumber belajar, media pembelajaran berbasis ipteks, dan potensi lingkungan setempat, sesuai standar proses dan mutu",
+            "Mengevaluasi pendidikan Anak Berkebutuhan Khusus (ABK) di sekolah khusus, sekolah inklusif, maupun jalur pendidikan nonformal pada tingkat pendidikan pra sekolah, dasardan menengah dengan berbasis kemandirian.",
+            "Menerapkan kemampuan sikap, pengetahuan, keterempilan dengan komitmen daam memanfaatkan setiap peluang untuk pengembangan diri berbasis kehidupan.",
+          ],
           jenjang: [
             {
               label: "S1 Pendidikan Luar Biasa",
-              visi: "",
-              misi: [],
-              tujuan: [],
+              visi: "Mengembangkan keilmuan Pendidikan Luar Biasa/Pendidikan Khusus yang adaptif terhadap perkembangan IPTEKS  dengan penekanan pada Pengembangan Kurikulum dan Pembelajaran serta Pengembangan  Sumberdaya dan  Inovasi  dalam Pendidikan Luar Biasa untuk menghasilkan lulusan yang memiliki komitmen dan kemandirian pada tahun 2027",
+              misi: [
+                "Menyelenggarakan pendidikan dan pengajaran di bidang Pendidikan Luar Biasa berbasis nilai soial budaya, kemanusiaan, dan religius",
+                "Melaksanakan penelitian di bidang keilmuan Pendidikan Luar Biasa",
+                "Melaksanakan pengabdian kepada masyarakat di bidang Pendidikan Luar Biasa",
+              ],
+              tujuan: [
+                "Untuk menghasilkan pendidik, pengelola, dan edutainer di bidang Pendidikan Sekolah Luar Biasa berkualifikasi sarjana (S1) yang beriman dan bertaqwa kepada Tuhan Yang Maha Esa, berwawasan kebangsaan serta profesional.",
+              ],
+              kurikulum: [
+                "Struktur kurikulum mahasiswa tahun angkatan 2015 mengacu pada Kerangka Kualifikasi Nasional Indonesia (KKNI) yang terdiri dari lima komponen, yaitu: Mata Kuliah Pengembangan Kepribadian (8 sks), Mata Kuliah Keilmuan dan Ketrampilan (77 sks), MatakuliahKeahlianBerkaraya (38 sks), Mata Kuliah Perilaku Berkarya (20 sks), Mata Kuliah Berkehidupan Bermasyarakat (8 sks). Jumlah keseluruhan SKS yang harus ditempuh mahasiswaselama 8 semester sebanyak 151 sks. Adapun untuk mahasiswa tahun angkatan 2014, 2013, 2012 dst mengikuti kurikulum sebelum diberlakukannya kurikulum S1 PLB berbasis KKNI tahun 2015.",
+              ],
               peluangKerja: [],
+              imageSelengapnya:
+                "https://um.ac.id/wp-content/uploads/2026/07/diktisaintek-berdampak.webp",
+              url: "https://fip.um.ac.id/s1-pendidikan-luar-biasa/",
+            },
+            {
+              label: "S2 Pendidikan Khusus",
+              visi: "Menjadi Program Studi Magister Pendidikan Khusus yang Unggul dan Menjadi Rujukan dalam Penyelenggaraan Tridharma Perguruan Tinggi Bidang Pendidikan Khusus di Asia Tenggara tahun 2028.",
+              misi: [
+                "Menyelenggarakan pendidikan dan pembelajaran Pendidikan Khusus dan penerapannya yang berpusat pada peserta didik, menggunakan pendekatan pembelajaran yang efektif, dan mengoptimalkan pemanfaatan teknologi.",
+                "Menyelenggarakan penelitian dalam bidang Pendidikan Khusus dan penerapannya yang bermanfaat bagi pengembangan Pendidikan Khusus dan kesejahteraan masyarakat.",
+                "Menyelenggarakan pengabdian kepada masyarakat melalui Pendidikan Khusus dan penerapannya yang berorientasi pada pemberdayaan masyarakat.",
+                "Menyelenggarakan tatapamong program studi magister Pendidikan Khusus yang otonom, akuntabel, dan transparan yang menjamin peningkatan kualitas secara berkelanjutan.",
+              ],
+              tujuan: [
+                "Menghasilkan lulusan magister Pendidikan Khusus yang cerdas, religius, berakhlak mulia, mandiri, dan mampu berkembang secara profesional.",
+                "Menghasilkan karya ilmiah dan karya kreatif yang unggul dan menjadi rujukan dalam Pendidikan Khusus dan penerapannya.","Menghasilkan karya pengabdian kepada masyarakat di bidang Pendidikan Khusus dan penerapannya untuk mewujudkan masyarakat yang mandiri, produktif, dan sejahtera.","Menghasilkan kinerja program studi magisterPendidikan Khusus yang efektif dan efisien untuk menjamin pertumbuhan kualitas pelaksanaan tridharma perguruan tinggi yang berkelanjutan."
+              ],
+              kurikulum: [
+                "",
+              ],
+              peluangKerja: [],
+              imageSelengapnya:
+                "https://um.ac.id/wp-content/uploads/2026/07/diktisaintek-berdampak.webp",
+              url: "https://fip.um.ac.id/s2-pendidikan-khusus/",
             },
           ],
         },
       };
+
 
       // Departemen yang sedang aktif ditampilkan (default: pertama di data)
       let activeDept = Object.keys(DEPT_DATA)[0];
