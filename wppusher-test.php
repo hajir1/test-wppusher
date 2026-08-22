@@ -1,10 +1,647 @@
 <?php
 /**
  * Plugin Name: WP Pusher Test
- * Description: Testing auto-deploy via WP Pusher
- * Version: 1.0
+ * Description: Testing auto-deploy via WP Pusher - layout Departemen & Program Studi (Fakultas Ilmu Pendidikan)
+ * Version: 1.1
  * Author: Hajir
  */
 
-// Kode plugin di sini
+// Cegah akses langsung ke file ini
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
 
+/**
+ * Daftarkan style.css yang ada di dalam folder plugin ini.
+ * File style.css TIDAK diikutsertakan di sini (sesuai permintaan),
+ * karena sudah dipisah dan ada di root folder plugin.
+ */
+function wppusher_test_enqueue_assets() {
+    wp_enqueue_style(
+        'wppusher-test-style',
+        plugin_dir_url( __FILE__ ) . 'style.css',
+        array(),
+        '1.1'
+    );
+}
+add_action( 'wp_enqueue_scripts', 'wppusher_test_enqueue_assets' );
+
+/**
+ * Shortcode: [fakultas_departemen]
+ * Menampilkan layout Departemen dan Program Studi.
+ * Cara pakai: taruh shortcode ini di halaman/post, atau di dalam
+ * Divi Code Module / Text Module.
+ */
+function wppusher_test_render_departemen() {
+    ob_start();
+    ?>
+
+    <!-- Sprite icon: checkmark dipakai di kotak checkbox departemen -->
+    <svg style="display: none" aria-hidden="true">
+      <symbol id="icon-dot" viewBox="60 60 115 115">
+        <path
+          d="M117.067 64.3561C110.881 64.3561 105.767 69.4079 106.835 75.5012C107.644 80.1143 108.954 84.6361 110.749 88.9841C113.973 96.7921 118.698 103.887 124.655 109.863C130.612 115.839 137.684 120.579 145.467 123.813C149.78 125.605 154.263 126.915 158.838 127.727C164.948 128.812 170.017 123.681 170.017 117.475C170.017 111.269 164.897 106.386 158.916 104.731C157.261 104.273 155.633 103.712 154.04 103.05C148.975 100.946 144.373 97.8605 140.496 93.9714C136.619 90.0822 133.544 85.4651 131.446 80.3838C130.777 78.7645 130.212 77.1083 129.752 75.425C128.122 69.4574 123.253 64.3561 117.067 64.3561Z"
+          fill="currentColor"
+          fill-opacity="0.2"
+        />
+        <path
+          d="M117.067 170.644C110.881 170.644 105.767 165.592 106.835 159.499C107.644 154.886 108.954 150.364 110.749 146.016C113.973 138.208 118.698 131.113 124.655 125.137C130.612 119.161 137.684 114.421 145.467 111.187C149.78 109.395 154.263 108.085 158.838 107.273C164.948 106.188 170.017 111.319 170.017 117.525C170.017 123.731 164.897 128.614 158.916 130.269C157.261 130.727 155.633 131.288 154.04 131.95C148.975 134.054 144.373 137.14 140.496 141.029C136.619 144.918 133.544 149.535 131.446 154.616C130.777 156.235 130.212 157.892 129.752 159.575C128.122 165.543 123.253 170.644 117.067 170.644Z"
+          fill="currentColor"
+          fill-opacity="0.2"
+        />
+        <path
+          d="M117.101 64.3561C123.287 64.3561 128.401 69.4079 127.333 75.5012C126.524 80.1143 125.214 84.6361 123.419 88.9841C120.195 96.7921 115.47 103.887 109.513 109.863C103.556 115.839 96.4839 120.579 88.7007 123.813C84.3884 125.605 79.9047 126.915 75.3304 127.727C69.2199 128.812 64.1511 123.681 64.1511 117.475C64.1511 111.269 69.2709 106.386 75.2521 104.731C76.9068 104.273 78.5352 103.712 80.1277 103.05C85.1929 100.946 89.7953 97.8605 93.6721 93.9714C97.5488 90.0822 100.624 85.4651 102.722 80.3838C103.391 78.7645 103.956 77.1083 104.416 75.425C106.046 69.4574 110.915 64.3561 117.101 64.3561Z"
+          fill="currentColor"
+          fill-opacity="0.2"
+        />
+        <path
+          d="M117.101 170.636C123.287 170.636 128.401 165.584 127.333 159.491C126.524 154.878 125.214 150.356 123.419 146.008C120.195 138.2 115.47 131.105 109.513 125.129C103.556 119.153 96.4839 114.413 88.7007 111.179C84.3884 109.387 79.9047 108.077 75.3304 107.265C69.2199 106.18 64.1511 111.311 64.1511 117.517C64.1511 123.723 69.2709 128.606 75.2521 130.262C76.9068 130.719 78.5352 131.28 80.1277 131.942C85.1929 134.047 89.7953 137.132 93.6721 141.021C97.5488 144.91 100.624 149.527 102.722 154.608C103.391 156.228 103.956 157.884 104.416 159.567C106.046 165.535 110.915 170.636 117.101 170.636Z"
+          fill="currentColor"
+          fill-opacity="0.2"
+        />
+      </symbol>
+
+      <symbol id="icon-leaf" viewBox="0 0 33 31">
+        <path
+          d="M16.1742 1.22266C16.1913 1.22286 16.3549 1.52048 16.5377 1.88424C16.924 2.65297 17.3936 3.4401 17.7219 3.86918C18.1583 4.43954 19.1513 5.63941 19.4166 5.91677C19.6112 6.12031 20.4398 7.15738 20.4399 7.19749C20.4399 7.21481 20.4796 7.2721 20.5282 7.32484C20.6567 7.4642 21.2208 8.41369 21.4955 8.95275C21.737 9.42689 21.9615 10.0077 22.1112 10.5136C21.916 10.6078 21.6635 10.7305 21.3785 10.8872C20.696 11.2625 19.8173 11.8377 18.9508 12.7525C17.8092 13.9576 16.7164 15.7226 16.0974 18.3333C15.4784 15.7226 14.3856 13.9576 13.244 12.7525C12.3775 11.8377 11.4988 11.2625 10.8163 10.8872C10.595 10.7655 10.3932 10.6643 10.2227 10.5811C10.3191 10.2141 10.4405 9.8409 10.5474 9.60015C10.8163 8.99409 11.4475 7.83644 11.6723 7.53674C11.7202 7.4729 11.8844 7.24781 12.0371 7.03652C12.1898 6.82528 12.3648 6.59547 12.4258 6.52583C12.9887 5.88401 14.4102 4.15778 14.7101 3.75187C15.1576 3.1461 15.3509 2.82004 15.8034 1.90749C15.9902 1.53087 16.157 1.22266 16.1742 1.22266Z"
+          fill="currentColor"
+        />
+        <path
+          d="M22.7169 11.4822C23.2647 11.2394 24.4064 10.9246 24.4064 11.0163C24.4065 11.0378 24.4592 11.2862 24.5236 11.5682C24.588 11.8503 24.6725 12.3915 24.7113 12.7708C24.9725 15.3299 24.4615 17.5988 23.1974 19.4918C22.8775 19.971 22.1209 20.8679 21.7716 21.1821C21.4984 21.4279 20.8164 21.9506 20.7689 21.9506C20.7527 21.9506 20.6723 22.0006 20.5902 22.0617C20.0513 22.4625 18.8472 22.9518 17.9983 23.115C17.5642 23.1985 17.3699 23.2179 16.5557 23.2219C16.5582 17.9982 18.1285 15.1331 19.6777 13.5204C20.4587 12.7075 21.2507 12.1954 21.8739 11.8575C22.0452 11.7646 22.203 11.6852 22.3463 11.6155C22.3998 11.618 22.5068 11.5753 22.7169 11.4822Z"
+          fill="currentColor"
+        />
+        <path
+          d="M9.47767 11.4822C8.93734 11.2394 7.81098 10.9246 7.81098 11.0163C7.81096 11.0378 7.75895 11.2862 7.69539 11.5682C7.63183 11.8503 7.54852 12.3915 7.51028 12.7708C7.25255 15.3299 7.75669 17.5988 9.00364 19.4918C9.31929 19.971 10.0656 20.8679 10.4102 21.1821C10.6798 21.4279 11.3526 21.9506 11.3994 21.9506C11.4153 21.9506 11.4946 22.0006 11.5757 22.0617C12.1073 22.4625 13.2951 22.9518 14.1325 23.115C14.5607 23.1985 14.7524 23.2179 15.5557 23.2219C15.5532 17.9982 14.0041 15.1331 12.4758 13.5204C11.7054 12.7075 10.9241 12.1954 10.3093 11.8575C10.1403 11.7646 9.98461 11.6852 9.84333 11.6155C9.79046 11.618 9.68496 11.5753 9.47767 11.4822Z"
+          fill="currentColor"
+        />
+        <path
+          d="M29.4329 15.3329C30.9115 15.3329 32.1338 16.5404 31.877 17.9965C31.6836 19.0927 31.3709 20.1672 30.9429 21.2005C30.1724 23.0608 29.043 24.7511 27.6192 26.1749C26.1954 27.5986 24.5051 28.7281 22.6448 29.4986C21.6115 29.9266 20.537 30.2392 19.4408 30.4326C17.9848 30.6895 16.7772 29.4671 16.7772 27.9886C16.7772 26.51 17.9967 25.3463 19.4224 24.9544C19.8207 24.8449 20.2126 24.7105 20.5958 24.5518C21.8065 24.0503 22.9065 23.3153 23.8331 22.3887C24.7597 21.4621 25.4947 20.3621 25.9961 19.1515C26.1549 18.7683 26.2892 18.3764 26.3987 17.9781C26.7907 16.5524 27.9543 15.3329 29.4329 15.3329Z"
+          fill="currentColor"
+        />
+        <path
+          d="M2.67746 15.3329C1.19889 15.3329 -0.0234585 16.5404 0.2334 17.9965C0.426775 19.0927 0.739405 20.1672 1.16741 21.2005C1.93796 23.0608 3.06737 24.7511 4.49116 26.1749C5.91495 27.5986 7.60523 28.7281 9.4655 29.4986C10.4988 29.9266 11.5733 30.2392 12.6695 30.4326C14.1256 30.6895 15.3331 29.4671 15.3331 27.9886C15.3331 26.51 14.1136 25.3463 12.6879 24.9544C12.2897 24.8449 11.8977 24.7105 11.5145 24.5518C10.3039 24.0503 9.20388 23.3153 8.27729 22.3887C7.3507 21.4621 6.61569 20.3621 6.11423 19.1515C5.9555 18.7683 5.82115 18.3764 5.71166 17.9781C5.3197 16.5524 4.15604 15.3329 2.67746 15.3329Z"
+          fill="currentColor"
+        />
+      </symbol>
+
+      <symbol id="icon-arrow" viewBox="0 0 13 17">
+        <path
+          d="M3.11637 0.802671C2.17409 0.802671 1.39519 1.57215 1.55787 2.50028C1.68102 3.20295 1.88058 3.89171 2.15403 4.55399C2.64509 5.74331 3.36485 6.82395 4.27221 7.73421C5.17958 8.64447 6.25677 9.36653 7.4423 9.85916C8.09914 10.1321 8.78211 10.3317 9.47886 10.4554C10.4096 10.6206 11.1817 9.83904 11.1817 8.89375C11.1817 7.94846 10.4018 7.20459 9.49079 6.9525C9.23874 6.88275 8.99069 6.79734 8.74813 6.69654C7.9766 6.37594 7.27557 5.90603 6.68507 5.31365C6.09456 4.72126 5.62615 4.01799 5.30657 3.24399C5.20474 2.99735 5.11865 2.74507 5.04862 2.48868C4.80032 1.57971 4.05865 0.802671 3.11637 0.802671Z"
+          fill="currentColor"
+        />
+        <path
+          d="M3.11637 16.9923C2.17409 16.9923 1.39519 16.2228 1.55787 15.2946C1.68102 14.592 1.88058 13.9032 2.15403 13.2409C2.64509 12.0516 3.36485 10.971 4.27221 10.0607C5.17958 9.15045 6.25677 8.42839 7.4423 7.93576C8.09914 7.66282 8.78211 7.46327 9.47886 7.33957C10.4096 7.17433 11.1817 7.95589 11.1817 8.90117C11.1817 9.84646 10.4018 10.5903 9.49079 10.8424C9.23874 10.9122 8.99069 10.9976 8.74813 11.0984C7.9766 11.419 7.27557 11.8889 6.68507 12.4813C6.09456 13.0737 5.62615 13.7769 5.30657 14.5509C5.20474 14.7976 5.11865 15.0498 5.04862 15.3062C4.80032 16.2152 4.05865 16.9923 3.11637 16.9923Z"
+          fill="currentColor"
+        />
+        <path
+          d="M2.96094 2.31641L2.96094 15.3407"
+          stroke="currentColor"
+          stroke-width="3.04501"
+          stroke-linecap="round"
+        />
+      </symbol>
+    </svg>
+    <!-- Radio penggerak 3 kategori utama sidebar -->
+    <input type="radio" name="fak-tab" id="tab-dept" checked />
+    <input type="radio" name="fak-tab" id="tab-pob" />
+    <input type="radio" name="fak-tab" id="tab-pedoman" />
+
+    <div class="fak-wrapper">
+      <!-- ===================== SIDEBAR ===================== -->
+      <div class="fak-sidebar">
+        <div class="fak-sidebar-title">Menu</div>
+
+        <label for="tab-dept" class="fak-btn btn-dept">
+          <svg class="icon-dibagian-sidebar-link" width="16" height="16">
+            <use href="#icon-dot"></use>
+          </svg>
+          Departemen dan Program Studi
+        </label>
+        <label for="tab-pob" class="fak-btn btn-pob">
+          <svg class="icon-dibagian-sidebar-link" width="16" height="16">
+            <use href="#icon-dot"></use>
+          </svg>
+          Prosedur Operasional Baku
+        </label>
+        <label for="tab-pedoman" class="fak-btn btn-pedoman">
+          <svg class="icon-dibagian-sidebar-link" width="16" height="16">
+            <use href="#icon-dot"></use>
+          </svg>
+          Pedoman Akademik
+        </label>
+      </div>
+
+      <!-- ===================== KONTEN TAB ===================== -->
+      <div class="fak-content">
+        <!-- ===== Tab 1: Departemen dan Program Studi ===== -->
+        <div id="content-dept" class="fak-tab">
+          <div class="fak-card">
+            <!-- Header halaman: kotak icon navy + bar gradient bertitik -->
+            <div class="dept-page-header">
+              <span class="dept-page-header-icon">
+                <svg viewBox="0 0 33 31"><use href="#icon-leaf"></use></svg>
+              </span>
+              <span class="dept-page-header-title">Departemen</span>
+            </div>
+
+            <!-- Checkbox seluruh departemen, di-render otomatis dari DEPT_DATA -->
+            <div class="dept-tabs" id="dept-tabs"></div>
+
+            <!-- Detail departemen yang sedang aktif -->
+            <div id="dept-detail"></div>
+          </div>
+        </div>
+
+        <!-- ===== Tab 2: Prosedur Operasional Baku ===== -->
+        <div id="content-pob" class="fak-tab">
+          <div class="fak-card">
+            <p class="fak-empty">Belum ada data Prosedur Operasional Baku.</p>
+          </div>
+        </div>
+
+        <!-- ===== Tab 3: Pedoman Akademik ===== -->
+        <div id="content-pedoman" class="fak-tab">
+          <div class="fak-card">
+            <p class="fak-empty">Belum ada data Pedoman Akademik.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // ============================================================
+      // SUMBER DATA DEPARTEMEN
+      // Tambah / hapus / ubah departemen cukup edit object ini,
+      // checkbox + isi konten + tombol "Jenjang Program Studi"
+      // akan otomatis menyesuaikan (dinamis, tidak perlu sentuh markup).
+      //
+      // Struktur tiap departemen:
+      //   key      : id unik dipakai internal (untuk id checkbox, dsb.)
+      //   name     : nama departemen, ditampilkan di checkbox & banner
+      //   image    : url gambar banner (opsional, boleh dikosongkan "")
+      //   scpl     : array string, daftar Standar Capaian Pembelajaran Lulusan
+      //   jenjang  : array {label, url} -> tombol jenjang program studi,
+      //              cukup isi jenjang yang memang dimiliki departemen itu.
+      //              Departemen tanpa S2/S3 cukup isi array S1 saja, dst.
+      // ============================================================
+      const DEPT_DATA = {
+        bk: {
+          name: "Bimbingan dan Konseling",
+          image: "",
+          scpl: [
+            "Memiliki pengetahuan dan kemampuan menampilkan perilaku sebagai warganegara yang agamis, mencintai negara, bangsa, dan budaya Indonesia berdasarkan jiwa pancasila, serta memiliki kemandirian dalam berkarya secara inovatif, adaptif, dan kritis sesuai dengan dinamika global.",
+            "Memiliki nilai dan wawasan keilmuan pendidikan dan pembelajaran secara teoritiki dan aplikatif dalam bingkai budaya Indonesia, dalam perannya sebagai pendidik yang kritis, inovatif, adaptif, dan komunikatif sesuai dengan karakter dan budaya peserta didik di era global",
+            "Mampu merumuskan tujuan, fungsi, prinsip, asas, konteks, pendekatan, dan prosedur layanan bimbingan dan konseling pada jenis, jalur dan jenjang pendidikan dengan menggunakan pemikiran logis, kritis, kreatif, sistematis, inovatif, dan komprehensif berdasarkan teori-teori pendidikan, psikologi, sosiologi-budaya dan antropologi.",
+            "Mampu mengembangkan, menyelenggarakan, mengevaluasi dan menyelia layanan bimbingan dan konseling yang komprehensif dan memandirikan yang bersifat developmental, preventif, kuratif, preservatif, dan kolaboratif pada jenis, jalur dan jenjang satuan pendidikan dengan menggunakan pemikiran logis, kritis, kreatif, sistematis, inovatif, komprehensif, dan adaptif dengan memerhatikan keragaman sasaran layanan.",
+            "Mampu mendokumentasikan, menyimpan, mengamankan, dan menemukan kembali data serta menggunakannya sesuai kode etik untuk mendukung layanan bimbingan dan konseling yang menjadi tanggung jawabnya.",
+            "Mampu melakukan kajian ilmiah bidang bimbingan dan konseling dalam bentuk penelitian skripsi dan mempublikasikannya dalam berbagai forum ilmiah.",
+            "Mampu mengembangkan diri secara multidisiplin dengan memelihara jaringan kerja sama dengan pembimbing, kolega, profesional lain, dan berbagai lembaga yang relevan dalam rangka mengelola dan mengevaluasi jasa profesi dalam bidang bimbingan dan konseling.",
+          ],
+          imageSelengapnya:
+            "https://um.ac.id/wp-content/uploads/2026/07/diktisaintek-berdampak.webp",
+          url: "https://um.ac.id/wp-content/uploads/2026/07/diktisaintek-berdampak.webp",
+          jenjang: [
+            {
+              label: "S1 Bimbingan dan Konseling",
+              visi: "Prodi yang unggul dan menjadi  rujukan dalam penyelenggaraan Tridharma  bidang bimbingan dan konseling.",
+              misi: [
+                "Menyelenggarakan pembelajaran yang mendidik di bidang bimbingan dan konseling.",
+                "Menyelenggarakan penelitian dan pengembangan ilmu, teknologi, dan seni yang berkelanjutan di bidang bimbingan dan konseling.",
+                "Menerapkan ilmu, teknologi, dan seni dalam bidang bimbingan dan konseling untuk kesejahteraan hidup masyarakat.",
+                "Menyelenggarakan tata pamong prodi yang mandiri, akuntabel, dan transparan yang menjamin peningkatan kualitas berkelanjutan.",
+              ],
+              tujuan: [
+                "Menghasilkan lulusan yang mumpuni dan mampu menyelenggarakan bimbingan dan konseling yang memandirikan serta menjadikan program studi sebagai rujukan dalam pengembangan dan penerapan keilmuan, teknologi, dan seni dalam bidang bimbingan dan konseling.",
+                "Menghasilkan karya-karya akademik melalui penelitian dan pengembangan untuk menyediakan fasilitas bagi penyelenggaraan bimbingan dan konseling di lembaga pendidikan formal dan non formal.",
+                "Memberikan layanan terapan bimbingan dan konseling bagi pengembangan sumberdaya manusia dalam berbagai seting, terutama pendidikan.",
+              ],
+              kurikulum: [],
+              peluangKerja: [
+                "Lulusan Program Studi Bimbingan dan Konseling pada jenjang S1, setelah menempuh program Pendidikan Profesi Guru Bimbingan dan Konseling atau Konselor, lulusan dapat bekerja sebagai konselor profesional pada  lembaga pendidikan jenjang SMP, SMA dan yang sederajat. Di samping itu lulusan juga dapat bekerja sebagai konselor profesional pada lembaga pendidikan TK/SD, Sekolah Luar Biasa, Perguruan Tinggi maupun Lembaga Pendidikan Non Formal, sesuai dengan program kekhususan yang dipilih oleh mahasiswa. Juga, kewenangan menyelenggarakan pelayanan di berbagai seting dengan memanfaatkan kemampuan bimbingan dan konseling yang telah dikuasai lulusan.",
+              ],
+              imageSelengapnya:
+                "https://um.ac.id/wp-content/uploads/2026/07/diktisaintek-berdampak.webp",
+              url: "https://fip.um.ac.id/bimbingan-dan-konseling-fip-um/",
+            },
+            {
+              label: "S2 Bimbingan dan Konseling",
+              visi: "Visi Prodi Magister BK Pascasarjana UM adalah “Menjadi program studi yang unggul dan rujukan dalam penyelenggaraan tridharma bidang bimbingan dan konseling”.",
+              misi: [
+                "Menyelenggarakan pendidikan dan pembelajaran program studi yang berpusat pada mahasiswa dengan menggunakan pendekatan yang efektif dan mengoptimalkan pemanfaatan teknologi untuk bidang ilmu bimbingan dan konseling.",
+                "Menyelenggarakan penelitian dan pengembangan bidang ilmu bimbingan dan konseling.",
+                "Menyelenggarakan pengabdian kepada masyarakat berlandaskan bidang ilmu bimbingan dan konseling.",
+                "Menyelenggarakan tatapamong Program Studi Magister Bimbingan dan Konseling Pascasarjana UM yang akuntabel dan transparan untuk menjamin peningkatan kualitas berkelanjutan.",
+              ],
+              tujuan: [
+                "Menghasilkan lulusan tenaga ahli berkualitas bidang bimbingan dan konseling yang (1) bertaqwa kepada Tuhan Yang Maha Esa, memiliki moral etika dan kepribadian yang baik dalam menyelesaikan tugasnya, dan (2) memiliki kemampuan level 8 sesuai Peraturan Presiden RI nomor 8 tahun 2012 tentang Kerangka Kualifikasi Nasional Indonesia (KKNI) khususnya bidang ilmu Bimbingan dan Konseling.",
+                "Menghasilkan karya-karya ilmiah berbasis riset di bidang bimbingan dan konseling.",
+                "Menghasilkan karya-karya pengabdian kepada masyarakat berlandaskan bidang ilmu bimbingan dan konseling.",
+                "Menghasilkan kinerja program studi yang profesional, efektif dan efisien, akuntabel untuk menjamin kualitas pelaksanaan tridharma perguruan tinggi di bidang bimbingan dan konseling secara berkelanjutan.",
+              ],
+              kurikulum: [],
+              peluangKerja: [],
+              imageSelengapnya:
+                "https://um.ac.id/wp-content/uploads/2026/07/diktisaintek-berdampak.webp",
+              url: "https://fip.um.ac.id/s2-bimbingan-dan-konseling/",
+            },
+            {
+              label: "S3 Bimbingan dan Konseling",
+              visi: "Program Doktor Bimbingan dan Konseling menjadi program studi yang unggul dan menjadi rujukan dalam penyelenggaraan tridharma perguruan tinggi bidang bimbingan dan konseling.",
+              misi: [
+                "Menyelenggarakan pendidikan dan pembelajaran program studi yang berpusat pada mahasiswa dengan menggunakan pendekatan yang efektif dan mengoptimalkan pemanfaatan teknologi untuk bidang ilmu bimbingan dan konseling.",
+                "Menyelenggarakan penelitian bidang bimbingan dan konseling.",
+                "Menyelenggarakan pengabdian kepada masyarakat bimbingan dan konseling.",
+                "Menyelenggarakan tatapamong program studi yang akuntabel dan transparan untuk menjamin peningkatan kualitas berkelanjutan.",
+              ],
+              tujuan: [
+                "Menghasilkan lulusan yang bertaqwa kepada Tuhan Yang Maha Esa, memiliki moral etika dan kepribadian yang baik dalam menyelesaikan tugasnya, berperan sebagai warga negara yang bangga dan cinta tanah air serta mendukung perdamaian dunia, mampu bekerjasama dan memiliki kepekaan sosial dan kepedulian yang tinggi terhadap masyarakat dan lingkungannya, menghargai keanekaragaman budaya, pandangan, kepercayaan dan agama serta pendapat/temuan original orang lain, menjunjung tinggi penegakan hukum, memiliki semangat untuk mendahulukan kepentingan bangsa dan masyarakat luas, serta mampu mengelola, memimpin, dan mengembangkan riset dalam rangka mengembangkan pengetahuan teknologi dan/atau seni baru di dalam bidang ilmu dan praktik bimbingan dan konseling.",
+                "menghasilkan karya ilmiah dan karya kreatif original dan teruji dalam bidang bimbingan dan konseling yang mendapat pengakuan nasional dan internasional.",
+                "menghasilkan karya pengabdian kepada masyarakat dalam bidang bimbingan dan konseling yang bermanfaat bagi kemaslahatan umat manusia.",
+                "karena keahlian di bidang spesialisasinya, lulusan Program Doktor Bimbingan dan Konseling diberikan kewenangan mengajar bidang bimbingan dan konseling pada jenjang S1 dan S2 di berbagai pendidikan tinggi.",
+                "menghasilkan kinerja program studi yang efektif, efisien, akuntabel, dan transfaran dalam penyelenggaraan tridharma perguruan tinggi.",
+              ],
+              kurikulum: [],
+              peluangKerja: [],
+              imageSelengapnya:
+                "https://um.ac.id/wp-content/uploads/2026/07/diktisaintek-berdampak.webp",
+              url: "https://fip.um.ac.id/s3-bimbingan-dan-konseling/",
+            },
+          ],
+        },
+        tp: {
+          name: "Teknologi Pendidikan",
+          image: "",
+          scpl: [
+            "Mengimplementasikan konten pengetahuan  untuk  menciptakan, menggunakan, mengases (assess) dan mengelola aplikasi Teknologi pembelajaran secara teoritik dan praktik.",
+            "Menerapkan konten Pedagogy melalui pengembangan diri menjadi praktisi reflektif (reflective practitioners) yang mampu mendemonstrasikan pemanfaatan proses-proses dan sumber-sumber belajar mutakhir.",
+            "Menerapkan IPTEKS dalam Lingkungan Belajar untuk memfasilitasi belajar dengan cara menciptakan, menggunakan, mengevaluasi, dan mengelola lingkungan belajar yang efektif",
+            "Mengimplementasikan Pengetahuan dan keterampilan Profesional dalam merancang, mengembangkan, mengimplementasikan dan menilai lingkungan belajar yang kaya teknologi dalam suatu komunitas praktik yang mendukung.",
+            "Menerapkan dalam melakukan mengeksplorasi,  mengevaluasi, mensintesis, dan menerapkan metode penelitian untuk meningkatkan belajar dan memperbaiki unjuk kerja.",
+          ],
+          imageSelengapnya:
+            "https://um.ac.id/wp-content/uploads/2026/07/diktisaintek-berdampak.webp",
+          url: "https://um.ac.id/wp-content/uploads/2026/07/diktisaintek-berdampak.webp",
+          jenjang: [
+            {
+              label: "S1 Teknologi Pendidikan",
+              visi: "Visi Jurusan Teknologi Pendidikan Fakultas Ilmu Pendidikan, Universitas Negeri Malang  adalah: Menjadipusat keunggulan dan rujukan dalam penyiapan teknolog pendidikan/pembelajaran, ilmuwan pembelajaran, tenaga pendidik dan kependidikan yang menguasai teknologi informasi dan komunikasi untuk memfasilitasi belajar dan memecahkan masalah-masalah pembelajaran dan pendidikan. Secara lebih operasional, keunggulan yang menjadi penekanan adalah perancangan, pengembangan, pemanfaatan, pengelolaan, evaluasi, dan riset proses dan sumber belajar dan pembelajaran, sehingga dihasilkan konsep, prinsip, desain, teori, model, yang inovatif kreatif pemecahan masalah belajar yang berorientasi pada pengembangan potensi dan pemberdayaan kehidupan anak bangsa sesuai dengan kondisi tuntutan pendidikan kekinian dan masa depan dalam jangkauan 2015-2025.",
+              misi: [
+                "Menyelenggarakan pendidikan tinggi untuk menghasilkan teknolog pendidikan/pembelajaran, tenaga pendidik dan kependidikan yang unggul dan memiliki daya saing yang tinggi. ",
+                "Melaksanakan penelitian dan pengembangan dalam bidang teknologi pendidikan/pembelajaran untuk menghasilkan karya akademik yang unggul dan menjadi rujukan.",
+                "Menerapkan/memanfaatkan berbagai hasil karya dalam bidang teknologi pendidikan/pembelajaran untuk memberdayakan masyarakat.",
+              ],
+              tujuan: [
+                "Menghasilkan pengembang teknologi pendidikan/pembelajaran yang mampu merancang, mengem­bangkan, memanfaatkan, dan mengelola serta mengevaluasi program, proses, dan produk pendidikan/pembelajaran dan pelatihan di berbagai jalur, jenis, dan jenjang pendidikan.",
+                "Menghasilkan tenaga kependidikan sebagai pengembang kurikulum satuan pendidikan, pendidikan dan pelatihan, serta pengelola perpustakaan.",
+                "Menghasilkan karya akademik melalui kegiatan penelitian dan pengembangan dalam bidang teknologi pendidikan/pembelajaran,memberdayakan masyarakat melalui penerapan berbagai hasil karya teknologi pendidikan/pembelajaran.",
+              ],
+              kurikulum: [],
+              peluangKerja: [],
+            },
+          ],
+        },
+        ap: {
+          name: "Administrasi Pendidikan",
+          image: "",
+          imageSelengapnya:
+            "https://um.ac.id/wp-content/uploads/2026/07/diktisaintek-berdampak.webp",
+          url: "https://um.ac.id/wp-content/uploads/2026/07/diktisaintek-berdampak.webp",
+          scpl: [
+            "Mampu mengaplikasikan ilmu pengetahuan, teknologi, dan seni bidang manajemen pendidikan.",
+            "Mampu mengaplikasikan ilmu pengetahuan, teknologi, dan seni bidang kepemimpinan pendidikan.",
+            "Mampu mengaplikasikan ilmu pengetahuan, teknologi, dan seni bidang supervisi pendidikan.",
+            "Mampu mengaplikasikan ilmu pengetahuan, teknologi, dan seni bidang entrepreneurship bidang pendidikan.",
+          ],
+          jenjang: [
+            {
+              label: "S1 Administrasi Pendidikan",
+              visi: "Sebagai program studi yang unggul dan menjadi rujukan dalam pengembangan keilmuan dan tenaga kependidikan di bidang manajemen pendidikan.",
+              misi: [
+                "Menyelenggarakan dan mengembangkan pendidikan akademik yang unggul dalam bidang Manajemen Pendidikan.",
+                "Mengkaji ilmu Manajemen Pendidikan agar menjadi rujukan sesuai dengan kebutuhan di masyarakat.",
+                "Mengembangkan dan menyebarluaskan ilmu dan teknologi Manajemen Pendidikan untuk meningkatkan kualitas pendidikan.",
+                "Menghasilkan lulusan yang unggul di bidang Manajemen Pendidikan.",
+              ],
+              tujuan: [
+                "Menghasilkan lulusan yang mampu: (a) Melaksanakan kegiatan manajerial di berbagai organisasi dan instansi pendidikan; (b) Menjalankan fungsi sebagai administrator/manager di berbagai jenjang dan jenis pada satuan pendidikan;dan (c) Mengelola kewirausahaan di bidang pendidikan.",
+                "Menghasilkan lulusan yang mampu mengaplikasikan ilmu pengetahuan, teknologi, dan seni di bidang administrasi/manajemen pendidikan yang relevan dengan situasi dan kondisi sekarang dan mendatang.",
+                "Menyebarluaskan hasil produksi pengembangan ilmu dan teknologi manajemen pendidikan untuk meningkatkan kualitas penyelenggaraan pendidikan di berbagai jenjang dan jenis satuan pendidikan.",
+              ],
+              kurikulum: [
+                "Kurikulum senantiasa berkembang sesuai dengan tuntutan masyarakat. Sesuai dengan tuntutan yang ada, dan berdasarkan Kepmendiknas Nomor 232/U/2000 tentang Pedoman Penyusunan Kurikulum Pendidikan Tinggi dan Penilaian Hasil Belajar Mahasiswa, serta Kepmendiknas Nomor 045/U/2002 tentang Kurikulum Inti Pendidikan Tinggi, Jurusan Administrasi Pendidikan mengembangkan kurikulum yang berlaku sekarang. Pengembangan kurikulum memperhatikan masukan & kebutuhan praktisi di lapangan serta pemikiran tentang peningkatan kualitas pengelolaan dan penyelenggaraan pendidikan di Indonesia. Sesuai dengan Peraturan Presiden RI Nomor 8 Tahun 2012, mulai tahun 2014 Jurusan Administrasi Pendidikan menerapkan kurikulum berbasis Kerangka Kualifikasi Nasional Indonesia (KKNI).",
+              ],
+              peluangKerja: [
+                "Secara umum program S-1 Jurusan Administrasi Pendidikan menghasilkan lulusan yang memiliki peluang kerja pada jenis-jenis tenaga kependidikan yang relevan sebagaimana diatur dalam Peraturan Pemerintah Republik Indonesia Nomor 38 tahun 1992 tentang Tenaga Kependidikan, Bab II pasal 2 – 3 dan Bab VI pasal 19­20. Di samping itu lulusan Jurusan Administrasi Pendidikan diharapkan dapat menempati pos-pos kerja berikut: (1) pengelola dan wirausaha di bidang pendidikan, (2) tenaga/staf administrasi dan atau manajer di unit-unit persekolahan (sekolah dasar s.d. perguruan tinggi), (3) tenaga/staf administrasi dan/atau manajemen di lingkungan Kementerian Pendidikan dan Kebudayaan serta unit-unit kantor dinas pendidikan dan kebudayaan, (4) tenaga/staf administrasi dan/atau manajemen di unit-unit kantor pemerintah daerah, (5) tenaga pengajar pada perguruan tinggi yang relevan (diutamakan yang telah memiliki ijazah S-2), (6) tenaga pendidik (guru) di sekolah-sekolah yang relevan, sesuai dengan persyaratan pengangkatan yang ditetapkan pemerintah dan/atau oleh instansi terkait, (7) tenaga pelatih (instruktur) dipusat-pusat pendidikan dan pelatihan, kursus-kursus, dan lembaga pendidikan lain yang relevan, (8) administrator, manajer, dan supervisor kependidikan, terutama bagi lulusan yang telah memiliki pengalaman kerja sebagai guru atau tenaga pendidik, dan (9) direktur, manajer atau pengelola lembaga-lembaga kependidikan yang relevan, sesuai dengan persyaratan dan pengalaman kerja yang dibutuhkan oleh instansi terkait.",
+              ],
+            },
+          ],
+        },
+        pls: {
+          name: "PLS",
+          image: "",
+          imageSelengapnya:
+            "https://um.ac.id/wp-content/uploads/2026/07/diktisaintek-berdampak.webp",
+          url: "https://um.ac.id/wp-content/uploads/2026/07/diktisaintek-berdampak.webp",
+          scpl: [
+            "Memiliki pengetahuan dan kemampuan menampilkan perilaku sebagai warga Negara yang agamis, mencintai Negara, bangsa, dan budaya Indonesia berdasarkan jiwa Pancasila serta memiliki kemandirian dalam berkarya secara inovatif, adaptif, dan kritis sesuai dengan dinamika global.",
+            "Menguasai konsep dan prosedur pendidikan nonformal secara kritis, kreatif, kolaboratif, komunikatif, mendayagunakan teknologi informasi (TI), serta memiliki integritas dan berkarakter.",
+            "Menguasi konsep social preneurship sehingga mampu merancang dan mengimplementasikan dalam bidang PNF secara kreatif & inovatif, responsif, serta memiliki integritas dan berkarakter.",
+            "Menguasai konsep dan prosedur penelitian sehingga mampu merancang dan mengimplementasikan penelitian bidang PNF secara kritis, kreatif, kolaboratif, komunikatif, mendayagunakan teknologi informasi (TI), serta memiliki integritas dan berkarakter",
+          ],
+          jenjang: [
+            {
+              label: "S1 Pendidikan Luar Sekolah",
+              visi: "Menjadi Program Studi Unggul dan Rujukan Bidang Pendidikan Luar Sekolah yang Berdaya Saing Global",
+              misi: [
+                "Menyelenggarakan dan mengembangkan pendidikan akademik yang unggul dalam bidang Manajemen Pendidikan.",
+                "Melakukan penelitian di bidang pendidikan luar sekolah berbasis IPTEK yang hasilnya digunakan untuk peningkatan kualitas pendidikan dan pembelajaran serta pengembangan keilmuan dibidang pendidikan luar sekolah.",
+                "Melakukan pengabdian kepada masyarakat yang berorientasi pada pemberdayaan masyarakat melalui penerapan IPTEK di bidang pendidikan luar sekolah.",
+              ],
+              tujuan: [
+                "Menghasilkan lulusan yang mampu mengaplikasikan prinsip, azas, pendekatan, strategi dan metode social education dan andragogy, penggunaan teknologi informasi dan komunikasi (TIK) dalam bidang pendidikan luar sekolah untuk menyelesaikan masalah-masalah mutakhir kualitas manusia dan masyarakat.",
+                "Menghasilkan karya-karya ilmiah berbasis riset di bidang pendidikan luar sekolah yang menunjang paradigma pendidikan sepanjang hayat (lifelong learning).",
+                "Menghasilkan model-model program layanan masyarakat di bidang pendidikan luar sekolah yang fungsional bagi alternatif solusi pemecahan masalah pendidikan di masyarakat.",
+              ],
+              kurikulum: [],
+              peluangKerja: [],
+            },
+          ],
+        },
+        pgpaud: {
+          name: "PG PAUD",
+          image: "",
+          imageSelengapnya:
+            "https://um.ac.id/wp-content/uploads/2026/07/diktisaintek-berdampak.webp",
+          url: "https://um.ac.id/wp-content/uploads/2026/07/diktisaintek-berdampak.webp",
+          scpl: [],
+          jenjang: [
+            {
+              label: "S1 PG PAUD",
+              visi: "",
+              misi: [],
+              tujuan: [],
+              peluangKerja: [],
+            },
+          ],
+        },
+        posd: {
+          name: "POSD",
+          image: "",
+          imageSelengapnya:
+            "https://um.ac.id/wp-content/uploads/2026/07/diktisaintek-berdampak.webp",
+          url: "https://um.ac.id/wp-content/uploads/2026/07/diktisaintek-berdampak.webp",
+          scpl: [],
+          jenjang: [
+            {
+              label: "S1 Pendidikan Guru Sekolah Dasar",
+              visi: "",
+              misi: [],
+              tujuan: [],
+              peluangKerja: [],
+            },
+          ],
+        },
+        plb: {
+          name: "PLB",
+          image: "",
+          imageSelengapnya:
+            "https://um.ac.id/wp-content/uploads/2026/07/diktisaintek-berdampak.webp",
+          url: "https://um.ac.id/wp-content/uploads/2026/07/diktisaintek-berdampak.webp",
+          scpl: [],
+          jenjang: [
+            {
+              label: "S1 Pendidikan Luar Biasa",
+              visi: "",
+              misi: [],
+              tujuan: [],
+              peluangKerja: [],
+            },
+          ],
+        },
+      };
+
+      // Departemen yang sedang aktif ditampilkan (default: pertama di data)
+      let activeDept = Object.keys(DEPT_DATA)[0];
+
+      // Render seluruh checkbox departemen di bagian atas
+      function renderDeptTabs() {
+        const wrap = document.getElementById("dept-tabs");
+        wrap.innerHTML = "";
+
+        Object.entries(DEPT_DATA).forEach(([key, dept]) => {
+          const item = document.createElement("div");
+          item.className = "dept-checkbox-item";
+          item.innerHTML = `
+                  <input type="checkbox" id="dept-${key}" ${key === activeDept ? "checked" : ""} />
+                  <label for="dept-${key}">${dept.name}</label>
+                `;
+
+          const checkbox = item.querySelector("input");
+          checkbox.addEventListener("change", () => {
+            if (checkbox.checked) {
+              // Perilaku single-select: hanya 1 departemen aktif dalam satu waktu
+              activeDept = key;
+              renderDeptTabs();
+              renderDeptDetail();
+            } else {
+              // Cegah semua checkbox ter-uncheck sekaligus (harus selalu ada 1 aktif)
+              checkbox.checked = true;
+            }
+          });
+
+          wrap.appendChild(item);
+        });
+      }
+
+      // Render detail departemen yang sedang aktif: banner, SCPL, dan
+      // tombol Jenjang Program Studi yang jumlah/isinya dinamis per departemen
+      function renderDeptDetail() {
+        const dept = DEPT_DATA[activeDept];
+        const root = document.getElementById("dept-detail");
+        if (!dept) {
+          root.innerHTML = `<p class="fak-empty">Departemen tidak ditemukan.</p>`;
+          return;
+        }
+
+        const bannerStyle = dept.image
+          ? `background-image:url('${dept.image}');`
+          : "";
+
+        const scplHtml =
+          dept.scpl && dept.scpl.length
+            ? `
+                    <div class="dept-section-title">Standar Capaian Pembelajaran Lulusan (SCPL)</div>
+                    <ul class="dept-scpl-list">
+
+                       ${dept.scpl.map((point) => `<li><svg viewBox="0 0 8 8"><use href="#icon-dot"></use></svg> <span>${point}</span> </li>`).join("")}
+                    </ul>
+                  `
+            : `<p class="fak-empty" style="margin-bottom:26px;">Belum ada data SCPL untuk departemen ini.</p>`;
+        const selengkapnyaHtml =
+          dept.url !== ""
+            ? `
+                     <div style="background: url(${dept.imageSelengapnya})" class="banner-gradient-white">
+                        <div class="banner-gradient-white-content">
+
+                          <h1>Informasi Selengkapnya</h1>
+                          <h3>
+                            Temukan informasi lengkap departmen ${dept.name}.
+                          </h3>
+                          <div class="banner-gradient-white-buttons">
+                            <a
+                              href="${dept.url}"
+                              target="_blank"
+                              class="cta-banner-gradient-white"
+                            >
+                              Lihat Selengkapnya
+                              <svg><use href="#icon-arrow"></use> </svg>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                  `
+            : `<p class="fak-empty" style="margin-bottom:26px;">Belum ada data SCPL untuk departemen ini.</p>`;
+
+        const jenjangHtml =
+          dept.jenjang && dept.jenjang.length
+            ? `
+                    <div style="margin-top:54px;" class="dept-page-header">
+                      <span class="dept-page-header-icon">
+                        <svg viewBox="0 0 33 31"><use href="#icon-leaf"></use></svg>
+                      </span>
+                      <span class="dept-page-header-title">Jenjang Program Studi</span>
+                    </div>
+                    <div class="jenjang-tabs" id="jenjang-tabs"></div>
+                    <div id="jenjang-detail"></div>
+                  `
+            : `<p class="fak-empty">Belum ada jenjang program studi untuk departemen ini.</p>`;
+
+        root.innerHTML = `
+                <div class="dept-banner" style="${bannerStyle}">
+                  <div class="dept-banner-title">${dept.name}</div>
+                </div>
+                ${scplHtml}
+                ${selengkapnyaHtml}
+                ${jenjangHtml}
+              `;
+
+        // Jenjang (S1/S2/S3, dst.) punya sub-tab + kartu detail sendiri,
+        // dirender setelah markup induk terpasang ke DOM.
+        if (dept.jenjang && dept.jenjang.length) {
+          if (dept._activeJenjangIndex == null) dept._activeJenjangIndex = 0;
+          renderJenjangTabs(dept);
+          renderJenjangDetailContent(dept);
+        }
+      }
+
+      // Render sub-tab jenjang (S1/S2/S3, dst.) milik departemen aktif
+      function renderJenjangTabs(dept) {
+        const wrap = document.getElementById("jenjang-tabs");
+        if (!wrap) return;
+        wrap.innerHTML = "";
+
+        dept.jenjang.forEach((j, index) => {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className =
+            "jenjang-tab-btn" +
+            (index === dept._activeJenjangIndex ? " active" : "");
+          btn.textContent = j.label;
+          btn.addEventListener("click", () => {
+            dept._activeJenjangIndex = index;
+            renderJenjangTabs(dept);
+            renderJenjangDetailContent(dept);
+          });
+          wrap.appendChild(btn);
+        });
+      }
+
+      // Render kartu detail: Visi, Misi, Tujuan, dan Peluang Kerja
+      // untuk jenjang yang sedang aktif
+      function renderJenjangDetailContent(dept) {
+        const root = document.getElementById("jenjang-detail");
+        if (!root) return;
+
+        const j = dept.jenjang[dept._activeJenjangIndex];
+        if (!j) {
+          root.innerHTML = `<p class="fak-empty">Data jenjang tidak ditemukan.</p>`;
+          return;
+        }
+
+        const listOrEmpty = (items, emptyText) =>
+          items && items.length
+            ? `<ul class="jenjang-info-list">${items
+                .map(
+                  (point) =>
+                    `<li><svg viewBox="0 0 8 8"><use href="#icon-dot"></use></svg><span>${point}</span></li>`,
+                )
+                .join("")}</ul>`
+            : `<p class="fak-empty">${emptyText}</p>`;
+
+        root.innerHTML = `
+                <div class="jenjang-info-card">
+                  <span class="jenjang-badge blue">Arah &amp; Tujuan</span>
+                  <div class="jenjang-info-title">Visi</div>
+                  ${
+                    j.visi
+                      ? `<p class="jenjang-info-text">${j.visi}</p>`
+                      : `<p class="fak-empty">Belum ada data Visi untuk jenjang ini.</p>`
+                  }
+                </div>
+
+                <div class="jenjang-info-card">
+                  <span class="jenjang-badge orange">Komitmen</span>
+                  <div class="jenjang-info-title">Misi</div>
+                  ${listOrEmpty(j.misi, "Belum ada data Misi untuk jenjang ini.")}
+                </div>
+
+                <div class="jenjang-info-card">
+                  <span class="jenjang-badge green">Pencapaian</span>
+                  <div class="jenjang-info-title">Tujuan</div>
+                  ${listOrEmpty(j.tujuan, "Belum ada data Tujuan untuk jenjang ini.")}
+                </div>
+
+                <div class="jenjang-info-card">
+                  <span class="jenjang-badge purple">Pembelajaran</span>
+                  <div class="jenjang-info-title">Kurikulum</div>
+                  ${listOrEmpty(j.kurikulum, "Belum ada data kurikulum untuk jenjang ini.")}
+                </div>
+
+                <div class="jenjang-info-card">
+                  <span class="jenjang-badge purple">Prospek Karier</span>
+                  <div class="jenjang-info-title">Peluang Kerja</div>
+                  ${listOrEmpty(
+                    j.peluangKerja,
+                    "Belum ada data Peluang Kerja untuk jenjang ini.",
+                  )}
+                </div>
+                <div style="background: url(${j?.imageSelengapnya})" class="banner-gradient-white">
+                  <div class="banner-gradient-white-content">
+                    <h1>Informasi Selengkapnya</h1>
+                    <h3>Temukan informasi lengkap mengenai program studi ${j.label}.
+                    </h3>
+                    <div class="banner-gradient-white-buttons">
+                      <a
+                        href="${j?.url}"
+                        target="_blank"
+                        class="cta-banner-gradient-white"
+                      >
+                        Lihat Selengkapnya
+                        <svg><use href="#icon-arrow"></use> </svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+              `;
+      }
+
+      // Init awal
+      renderDeptTabs();
+      renderDeptDetail();
+    </script>
+  
+    <?php
+    return ob_get_clean();
+}
+add_shortcode( 'fakultas_departemen', 'wppusher_test_render_departemen' );
