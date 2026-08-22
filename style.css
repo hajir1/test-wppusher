@@ -1,0 +1,663 @@
+/* ============================================================
+         LAYOUT DASAR
+         ============================================================ */
+.fak-wrapper {
+  display: flex;
+  gap: 28px;
+}
+
+/* ===== Sidebar (menu: Departemen / POB / Pedoman Akademik) ===== */
+.fak-sidebar {
+  width: 260px;
+}
+.fak-sidebar-title {
+  font-size: 14px;
+  padding-left: 22px;
+  letter-spacing: 0.14em;
+  color: #667;
+  margin-bottom: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.fak-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 50px;
+  margin-bottom: 6px;
+  cursor: pointer;
+  color: #012060;
+  font-size: 16px;
+  transition: 0.3s;
+}
+.fak-btn:hover {
+  background: #cfd4df;
+  color: #012060;
+}
+.icon-dibagian-sidebar-link {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* Radio input dipakai sebagai penggerak tab kategori utama, disembunyikan */
+input[name="fak-tab"] {
+  display: none;
+}
+
+/* Tab kategori aktif: highlight tombol sidebar */
+#tab-dept:checked ~ .fak-wrapper .btn-dept,
+#tab-pob:checked ~ .fak-wrapper .btn-pob,
+#tab-pedoman:checked ~ .fak-wrapper .btn-pedoman {
+  background: #012060;
+  font-weight: 700;
+  color: #fff;
+}
+#tab-dept:checked ~ .fak-wrapper .btn-dept .icon-dibagian-sidebar-link,
+#tab-pob:checked ~ .fak-wrapper .btn-pob .icon-dibagian-sidebar-link,
+#tab-pedoman:checked ~ .fak-wrapper .btn-pedoman .icon-dibagian-sidebar-link {
+  fill: #fff;
+}
+
+/* Tab kategori aktif: tampilkan konten yang sesuai */
+.fak-tab {
+  display: none;
+}
+#tab-dept:checked ~ .fak-wrapper #content-dept,
+#tab-pob:checked ~ .fak-wrapper #content-pob,
+#tab-pedoman:checked ~ .fak-wrapper #content-pedoman {
+  display: block;
+}
+
+/* ===== Kartu konten ===== */
+.fak-content {
+  flex: 1;
+}
+.fak-card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 26px;
+  margin-bottom: 36px;
+}
+.fak-empty {
+  color: #667;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+/* ============================================================
+         HEADER HALAMAN ("Departemen") — kotak icon navy + bar gradient bertitik
+         ============================================================ */
+.dept-page-header {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding-right: 12px;
+  background: linear-gradient(135deg, #0242c6 0%, #012060 100%);
+  border: 1px solid white;
+  border-radius: 4px;
+  color: #ffffff;
+  position: relative;
+  left: 50%;
+  margin-bottom: 44px;
+  transform: translateX(-50%);
+  font-family: "Albert Sans", Helvetica, Arial, Lucida, sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+.dept-page-header-icon {
+  background-color: #012060;
+  padding: 12px;
+  border-radius: 4px;
+}
+.dept-page-header-icon svg {
+  width: 22px;
+  height: 22px;
+  fill: #fff;
+}
+
+/* ============================================================
+         SUB-TAB DEPARTEMEN (checkbox, single-active, dynamic dari JS)
+         ============================================================ */
+.dept-tabs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  background: #f4f5f8;
+  border-radius: 50px;
+  padding: 6px;
+  margin-bottom: 22px;
+}
+.dept-checkbox-item {
+  position: relative;
+}
+.dept-checkbox-item input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.dept-checkbox-item label {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 18px;
+  border-radius: 50px;
+  background: transparent;
+  color: #012060;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.25s;
+  user-select: none;
+}
+.dept-checkbox-item label:hover {
+  background: #e3e6ee;
+}
+.dept-checkbox-item input[type="checkbox"]:checked + label {
+  background: #012060;
+  color: #fff;
+  font-weight: 700;
+}
+
+/* ===== Banner departemen ===== */
+.dept-banner {
+  position: relative;
+  height: 210px;
+  border-radius: 14px;
+  background-size: cover;
+  background-position: center;
+  background-color: #223669;
+  display: flex;
+  align-items: flex-end;
+  padding: 20px 24px;
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+.dept-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(1, 32, 96, 0) 40%,
+    rgba(1, 32, 96, 0.85) 100%
+  );
+}
+.dept-banner-title {
+  position: relative;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.dept-section-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #012060;
+  margin-bottom: 14px;
+}
+.dept-scpl-list {
+  list-style: none;
+  margin: 0 0 26px 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.dept-scpl-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  text-align: justify;
+  line-height: 1.65;
+  color: #000;
+}
+.dept-scpl-list li svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* ===== Tab jenjang (dinamis per departemen) =====
+         Menggantikan tombol link lama: klik jenjang sekarang
+         menampilkan detail Visi/Misi/Tujuan/Peluang Kerja,
+         bukan berpindah halaman. ===== */
+.jenjang-tabs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  background: #f4f5f8;
+  border-radius: 50px;
+  padding: 6px;
+  margin-bottom: 22px;
+}
+.jenjang-tab-btn {
+  flex: 1;
+  min-width: 160px;
+  text-align: center;
+  padding: 10px 14px;
+  border-radius: 50px;
+  color: #012060;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: 0.25s;
+  font-family: inherit;
+}
+.jenjang-tab-btn:hover {
+  background: #cfd4df;
+}
+.jenjang-tab-btn.active {
+  background: #012060;
+  color: #fff;
+}
+.jenjang-tab-btn.active:hover {
+  background: #01308a;
+}
+
+/* ===== Kartu info jenjang: Visi / Misi / Tujuan / Peluang Kerja ===== */
+.jenjang-info-card {
+  background: #f7f8fb;
+  border-radius: 16px;
+  padding: 22px 24px;
+  margin-bottom: 18px;
+}
+.jenjang-badge {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.jenjang-badge.blue {
+  background: #dbeafe;
+  color: #1d4ed8;
+  border: 1px solid #74cdff;
+}
+.jenjang-badge.orange {
+  background: #fef3c7;
+  color: #b45309;
+  border: 1px solid #e6b296;
+}
+.jenjang-badge.green {
+  background: #dcfce7;
+  color: #15803d;
+  border: 1px solid #bcff88;
+}
+.jenjang-badge.purple {
+  background: #ede9fe;
+  color: #6d28d9;
+  border: 1px solid #c899e0;
+}
+.jenjang-info-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #012060;
+  margin: 0 0 12px 0;
+}
+.jenjang-info-text {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #000;
+  margin: 0;
+}
+.jenjang-info-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.jenjang-info-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  text-align: justify;
+  font-size: 16px;
+  line-height: 1.65;
+  color: #000;
+}
+.jenjang-info-list li svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  margin-top: 5px;
+  color: #012060;
+}
+
+/* ============================================================
+         RESPONSIVE
+         ============================================================ */
+@media (max-width: 768px) {
+  .fak-wrapper {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .fak-sidebar {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .fak-sidebar-title {
+    flex-basis: 100%;
+    padding-left: 4px;
+    margin-bottom: 6px;
+  }
+  .fak-btn {
+    margin-bottom: 0;
+    padding: 8px 14px;
+    font-size: 14px;
+  }
+  .fak-card {
+    padding: 18px;
+  }
+
+  /* ===== Header halaman (icon navy + judul) ===== */
+  .dept-page-header {
+    max-width: 100%;
+    font-size: 20px;
+    gap: 10px;
+    padding-right: 10px;
+  }
+  .dept-page-header-icon {
+    padding: 10px;
+  }
+  .dept-page-header-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* ===== Sub-tab departemen ===== */
+  .dept-tabs {
+    gap: 4px;
+    padding: 4px;
+  }
+  .dept-checkbox-item label {
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+
+  /* ===== Banner departemen ===== */
+  .dept-banner {
+    height: 160px;
+    padding: 16px 18px;
+    border-radius: 12px;
+  }
+  .dept-banner-title {
+    font-size: 19px;
+  }
+
+  /* ===== SCPL ===== */
+  .dept-section-title {
+    font-size: 15px;
+  }
+  .dept-scpl-list li {
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  /* ===== Tab jenjang ===== */
+  .jenjang-tabs {
+    flex-direction: column;
+    gap: 6px;
+    padding: 6px;
+  }
+  .jenjang-tab-btn {
+    width: 100%;
+    min-width: 0;
+    padding: 10px 12px;
+  }
+
+  /* ===== Kartu info jenjang ===== */
+  .jenjang-info-card {
+    padding: 16px 16px;
+    margin-bottom: 14px;
+    border-radius: 12px;
+  }
+  .jenjang-badge {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+  .jenjang-info-title {
+    font-size: 16px;
+  }
+  .jenjang-info-text,
+  .jenjang-info-list li {
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  /* ===== Banner "Informasi Selengkapnya" ===== */
+  .banner-gradient-white {
+    border-radius: 12px;
+  }
+  .banner-gradient-white-content {
+    padding: 16px;
+  }
+  .banner-gradient-white-content h1 {
+    font-size: 18px;
+  }
+  .banner-gradient-white-content h3 {
+    width: 100%;
+    font-size: 13px;
+  }
+  .cta-banner-gradient-white {
+    font-size: 13px;
+    padding: 8px 10px;
+    margin-top: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .fak-sidebar {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 6px;
+  }
+  .fak-btn {
+    white-space: nowrap;
+  }
+
+  .fak-card {
+    padding: 14px;
+    border-radius: 14px;
+  }
+
+  /* Header halaman: izinkan judul turun baris di layar sangat sempit */
+  .dept-page-header {
+    flex-wrap: wrap;
+    font-size: 17px;
+    padding: 6px 10px 6px 6px;
+  }
+  .dept-page-header-icon {
+    padding: 8px;
+  }
+  .dept-page-header-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .dept-checkbox-item label {
+    padding: 7px 12px;
+    font-size: 12.5px;
+  }
+
+  .dept-banner {
+    height: 140px;
+    padding: 14px;
+  }
+  .dept-banner-title {
+    font-size: 17px;
+  }
+
+  .jenjang-info-card {
+    padding: 14px;
+  }
+
+  .banner-gradient-white {
+    min-height: 220px;
+  }
+  .banner-gradient-white-content h1 {
+    font-size: 16px;
+  }
+}
+
+.banner-gradient-white {
+  position: relative;
+  margin: 0 auto;
+  min-height: 240px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  border-top-right-radius: 13px;
+  border-bottom-right-radius: 13px;
+  /* Ganti url() ini dengan gambar kamu sendiri */
+  /* background: url("https://um.ac.id/wp-content/uploads/2026/07/bg-header-prestasi.webp"); */
+  background-size: cover;
+  background-position: center;
+}
+.banner-gradient-white::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40%;
+  height: 100%;
+  border-top-right-radius: 13px;
+  border-bottom-right-radius: 13px;
+}
+
+/* Overlay gradasi navy dari kiri (solid) memudar ke kanan (transparan) */
+.banner-gradient-white::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    #fff 18%,
+    #fff 43%,
+    #fff 70%,
+    rgba(4, 66, 198, 0.1) 100%
+  );
+  z-index: 1;
+}
+
+.banner-gradient-white-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  color: #ffffff;
+}
+.banner-gradient-white-content h1 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #012060;
+}
+.banner-gradient-white-content h3 {
+  font-weight: 500;
+  font-size: 16px;
+  width: 80%;
+  color: #000;
+}
+
+.banner-gradient-white-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+.cta-banner-gradient-white {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 32px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1px solid #012060;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: #012060;
+  transition:
+    opacity 0.2s ease,
+    transform 0.15s ease;
+}
+.cta-banner-gradient-white:hover {
+  background-color: #cfd4df;
+  color: #012060;
+  border: 1px solid #cfd4df;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+/* .cta-banner-gradient-white:hover {
+        background: none;
+        color: white;
+        border: none;
+        border: 1px solid white;
+        transition: all 0.3s ease;
+      } */
+.cta-banner-gradient-white svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  margin-left: auto;
+  color: white;
+}
+.cta-banner-gradient-white:hover svg {
+  color: #012060;
+}
+@media (max-width: 640px) {
+  .banner-gradient-white {
+    min-height: 200px;
+  }
+  .banner-gradient-white-content {
+    /* padding: 22px 20px; */
+    max-width: 100%;
+    padding: 8px;
+  }
+  .banner-gradient-white-content h1 {
+    font-size: 22px;
+  }
+  .banner-gradient-white-content h3 {
+    color: #012060;
+  }
+  .banner-gradient-white-buttons {
+    padding-bottom: 8px;
+  }
+  .banner-gradient-white::after {
+    width: 100%;
+  }
+  .banner-gradient-white::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      #fff 18%,
+      #fff 32%,
+      #fff 45%,
+      rgba(4, 66, 198, 0.1) 100%
+    );
+    z-index: 1;
+  }
+}
