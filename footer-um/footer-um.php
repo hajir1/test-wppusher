@@ -218,12 +218,10 @@ function um_footer_render()
             background: #012060;
             position: relative;
             overflow: hidden;
-            padding: 50px 0 80px;
+            padding: 28px 0;
         }
 
         .um-footer-wrap .footer-container {
-            width: 90%;
-            max-width: 1100px;
             margin: auto;
             position: relative;
             z-index: 2;
@@ -246,7 +244,7 @@ function um_footer_render()
         }
 
         .um-footer-wrap .logo-area img {
-            height: 45px;
+            height: 65px;
         }
 
         .um-footer-wrap .contact-row {
@@ -366,7 +364,6 @@ function um_footer_render()
                 <!-- TOP INFO -->
                 <div class="top-card">
                     <div class="logo-area">
-                        <img src="https://ppdh.um.ac.id/wp-content/uploads/2022/09/logo-white1.png" alt="Logo UM" />
                         <img src="<?php echo esc_url($logo); ?>" alt="Logo Fakultas" />
                     </div>
 
