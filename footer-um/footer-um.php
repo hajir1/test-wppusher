@@ -66,6 +66,10 @@ function um_footer_faculty_map()
             'grad_end'   => '#B62020',
             'accent'     => '#FF3131',
             'logo'       => "https://pasca-ft.um.ac.id/wp-content/uploads/2026/08/FT.webp"], // Fakultas Teknik
+        'pasca'      => ['base' => '#FF3131','grad_start' => '#FF3131',
+            'grad_end'   => '#B62020',
+            'accent'     => '#FF3131',
+            'logo'       => "https://pasca-ft.um.ac.id/wp-content/uploads/2026/08/FT.webp"], // Fakultas Pasca Teknik
         'fmipa'   => ['base' => '#00700B','grad_start' => '#00700B',
             'grad_end'   => '#015509',
             'accent'     => '#00700B',
