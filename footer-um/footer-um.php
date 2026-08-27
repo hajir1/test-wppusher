@@ -39,11 +39,18 @@ if (!defined('ABSPATH')) {
 function um_footer_faculty_map()
 {
     return [
-        'fip' => [ // Fakultas Ilmu Pendidikan
+        'brand' => [ // Fakultas Ilmu Pendidikan
             'base'       => '#FFFFFF',
             'grad_start' => '#FFFFFF',
             'grad_end'   => '#8CB2FF',
             'accent'     => '#FFFFFF',
+            'logo'       => 'https://pasca-ft.um.ac.id/wp-content/uploads/2026/08/FIP-2.webp',
+        ],
+        'fip' => [ // Fakultas Ilmu Pendidikan
+            'base'       => 'rgba(10, 30, 80, 0.75)',
+            'grad_start' => 'rgba(10, 30, 80, 0.75)',
+            'grad_end'   => '#0b1529',
+            'accent'     => 'rgba(10, 30, 80, 0.75)',
             'logo'       => 'https://pasca-ft.um.ac.id/wp-content/uploads/2026/08/FIP-2.webp',
         ],
         'sastra' => [ // Fakultas Sastra
@@ -294,7 +301,8 @@ function um_footer_render()
 
         /* FOOTER BOTTOM */
         .um-footer-wrap .footer-bottom {
-            text-align: center;
+            display: flex;
+            justify-content: center;
             color: #fff;
             font-size: 16px;
             border-radius: 13px;
@@ -307,6 +315,7 @@ function um_footer_render()
             color: #fff !important;
             text-decoration: none;
             margin: 0 15px;
+
         }
 
         /* BACKGROUND FOTO + OVERLAY GRADIENT DINAMIS */
@@ -315,6 +324,7 @@ function um_footer_render()
             padding: 60px 50px;
             border-radius: 20px;
             overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             background:
                 linear-gradient(
                     <?php echo esc_attr($c['grad_start']); ?>BF,
@@ -326,6 +336,7 @@ function um_footer_render()
 
         .um-footer-wrap .footer-bg::before {
             content: "";
+            inset: 0;
             position: absolute;
             background: rgba(255, 255, 255, 0.02);
         }
@@ -342,6 +353,10 @@ function um_footer_render()
             }
             .um-footer-wrap .contact-row {
                 flex-direction: column;
+            }
+            .um-footer-wrap .footer-bottom{
+                flex-direction: column;
+                gap: 12px;
             }
         }
 
