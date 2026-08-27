@@ -288,9 +288,9 @@ function um_footer_render()
             line-height: 1.5;
         }
 
-        .um-footer-wrap .menu-col a:hover {
-            color: <?php echo esc_attr($c['accent']); ?> !important;
-        }
+        /* .um-footer-wrap .menu-col a:hover {
+            color: !important;
+        } */
 
         /* FOOTER BOTTOM */
         .um-footer-wrap .footer-bottom {
