@@ -1,0 +1,66 @@
+.et_pb_fullwidth_menu .et-menu > li > a {
+    position: relative;
+    padding-bottom: 8px !important;
+    transition: color 0.3s ease, opacity 0.3s ease;
+    letter-spacing: 0.3px;
+}
+
+.et_pb_fullwidth_menu .et-menu > li > a::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #fff, #fff);
+    border-radius: 2px;
+    transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1), left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(-50%);
+}
+
+/* Hover state */
+.et_pb_fullwidth_menu .et-menu > li > a:hover {
+    color: #fff !important;
+}
+
+.et_pb_fullwidth_menu .et-menu > li > a:hover::after {
+    width: 100%;
+}
+
+/* Active / current page */
+.et_pb_fullwidth_menu .et-menu > li.current-menu-item > a {
+    color: #FFFFFF !important;
+    font-weight: 600;
+}
+
+.et_pb_fullwidth_menu .et-menu > li.current-menu-item > a::after {
+    width: 100%;
+}
+
+/* Slight fade on non-hovered items when one is hovered (opsional, efek fokus) */
+.et_pb_fullwidth_menu .et-menu:hover > li > a:not(:hover) {
+    opacity: 0.75;
+}
+
+/* Smooth transition saat menu pertama load */
+.et_pb_fullwidth_menu .et-menu > li > a {
+    transition: color 0.3s ease, opacity 0.3s ease;
+}
+/* Center-kan menu items - fixed no wrap */
+.et_pb_fullwidth_menu .et-menu {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+    width: 100% !important;
+    white-space: nowrap;
+}
+
+.et_pb_fullwidth_menu .et-menu > li {
+    flex-shrink: 0;
+}
+
+.et_pb_fullwidth_menu .et_pb_menu__wrap {
+    width: 100% !important;
+    overflow-x: visible;
+}

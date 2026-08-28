@@ -236,9 +236,9 @@ function um_footer_render()
 
         /* CARD INFO */
         .um-footer-wrap .top-card {
-            background: linear-gradient(90deg, <?php echo esc_attr($c['grad_start']); ?> 60%, <?php echo esc_attr($c['grad_end']); ?>);
-            border-radius: 15px;
-            padding: 25px 40px;
+            background: linear-gradient(90deg, <?php echo esc_attr($c['grad_start']); ?> 80%, <?php echo esc_attr($c['grad_end']); ?>);
+            border-radius: 13px;
+            padding: 12px 20px;
             margin-bottom: 30px;
         }
 
@@ -281,7 +281,7 @@ function um_footer_render()
         .um-footer-wrap .menu-col hr {
             border: 0;
             height: 2px;
-            background-color: <?php echo esc_attr($c['accent']); ?>;
+            background-color: #fff;
             margin-bottom: 20px;
             opacity: 0.9;
         }
@@ -439,7 +439,7 @@ function um_footer_render()
 
                 <!-- FOOTER BOTTOM -->
                 <div class="footer-bottom">
-                    © <?php echo esc_html(date('Y')); ?> Universitas Negeri Malang
+                    <a href="#">© <?php echo esc_html(date('Y')); ?> Universitas Negeri Malang</a>
                     <a href="#">Kebijakan Privasi</a>
                     <a href="#">Syarat Penggunaan</a>
                     <a href="#">Peta Situs</a>
